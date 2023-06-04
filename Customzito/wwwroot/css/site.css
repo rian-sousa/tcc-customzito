@@ -1,0 +1,29 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.header-nav-font-style-size {
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.header-nav-itens-font-style {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}

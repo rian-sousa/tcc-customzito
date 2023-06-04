@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Pages\Customizados\" />
+    <Folder Include="Pages\Masculino\" />
+    <Folder Include="Pages\Feminino\" />
+    <Folder Include="Pages\Sobre\" />
+    <Folder Include="Support\Midias\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
+
+</Project>
