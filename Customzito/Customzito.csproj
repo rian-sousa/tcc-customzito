@@ -7,13 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Support\**" />
+    <Content Remove="Support\**" />
+    <EmbeddedResource Remove="Support\**" />
+    <None Remove="Support\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="Pages\Customizados\" />
     <Folder Include="Pages\Masculino\" />
     <Folder Include="Pages\Feminino\" />
     <Folder Include="Pages\Sobre\" />
-    <Folder Include="Support\" />
     <Folder Include="Views\" />
   </ItemGroup>
 
