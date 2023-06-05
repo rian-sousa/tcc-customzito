@@ -13,8 +13,15 @@
     <Folder Include="Pages\Masculino\" />
     <Folder Include="Pages\Feminino\" />
     <Folder Include="Pages\Sobre\" />
-    <Folder Include="Support\Midias\" />
+    <Folder Include="Support\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\chorao-travis.jpg" />
+    <None Include="wwwroot\images\feminino.jpg" />
+    <None Include="wwwroot\images\logo.png" />
+    <None Include="wwwroot\images\masculino.jpg" />
   </ItemGroup>
 
 </Project>
