@@ -26,5 +26,31 @@ body {
 .header-nav-itens-font-style {
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
+}
+
+.titulo-nav-spacing{
+    letter-spacing: 20px;
+}
+
+.titulo-item{
+  letter-spacing: 2px;
+}
+
+.titulo-form{
+    margin: 0 0 0 70px;
+}
+
+.titulo-container{
+    letter-spacing: 9px;
+    font-size: xx-large;
+    text-align: center;
+    color: lightslategrey;
+    font-family: 'Courier New';
+    opacity: 0.2;
     
+}
+.card-img-collections {
+    height: 225px;
+    width: 100%;
+    display: block;
 }

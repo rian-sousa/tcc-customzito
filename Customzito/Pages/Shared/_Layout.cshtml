@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - Customzito</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
 
     <!-- Customzito CSS -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -16,11 +16,13 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-ligh bg-light">
-
-            <a class="navbar-brand header-nav-font-style-size" asp-area="" asp-page="/Index">
-                <img class="logo" style="height: 110px; width: 250px " src="@Url.Content("~/images/logo.png")"/>
-            </a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/Index">
+                    <img src="support/src/navLogo.png" alt="" style="width:auto; height: auto; max-width: 100px; max-height:100px " />
+                </a>
+            </div>
+            <a class="navbar-brand header-nav-font-style-size titulo-nav-spacing" asp-area="" asp-page="/Index">CUSTOMZITO</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -29,25 +31,21 @@
             <div class="container">                
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-sm-center">
                     <ul class="navbar-nav mr-auto header-nav-itens-font-style">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark btn btn-outline-info mr-2" asp-area="" asp-page="~/Customizados/Index">Customizados</a>
+                        <li class="nav-item titulo-item">
+                            <a class="nav-link" asp-area="" asp-page="~/Customizados/Index">coleções</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark btn btn-outline-info mr-2" asp-area="" asp-page="~/Masculino/Index">Masculino</a>
+                        <li class="nav-item titulo-item">
+                            <a class="nav-link" asp-area="" asp-page="~/Sobre/Index">sobre</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark btn btn-outline-info mr-2" asp-area="" asp-page="~/Feminino/Index">Feminino</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark btn btn-outline-info mr-2" asp-area="" asp-page="~/Sobre/Index">Sobre</a>
-                        </li>
-                    </ul>                    
+                        @*<li class="nav-item titulo-item">
+                            @Html.ActionLink("stock","Index","Stock");
+                        </li>*@
+                    </ul>              
+                    <form class="form-inline my-2 my-md-4 titulo-form">
+                        <input class="form-control form-control-sm" type="text" placeholder="Pesquisar" aria-label="Search">
+                    </form>
                 </div>                
-            </div>
-
-            <form class="form-inline my-2 my-md-4">
-                <input class="form-control" type="text" placeholder="Pesquisar" aria-label="Search">
-            </form>
+            </div>      
 
         </nav>
     </header>
@@ -68,7 +66,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap -->
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
     @await RenderSectionAsync("Scripts", required: false)

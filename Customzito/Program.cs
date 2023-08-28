@@ -1,7 +1,12 @@
+using Customzito.Services.CZDatabase;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<CZContext>(options => 
+                options.UseSqlServer("DefaultConnection"));
 
 var app = builder.Build();
 

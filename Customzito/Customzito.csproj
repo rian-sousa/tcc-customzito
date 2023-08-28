@@ -15,19 +15,21 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Pages\Customizados\" />
     <Folder Include="Pages\Masculino\" />
     <Folder Include="Pages\Feminino\" />
     <Folder Include="Pages\Sobre\" />
-    <Folder Include="Views\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\images\chorao-travis.jpg" />
-    <None Include="wwwroot\images\feminino.jpg" />
-    <None Include="wwwroot\images\logo.png" />
-    <None Include="wwwroot\images\masculino.jpg" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CustomBancoLib">
+      <HintPath>..\..\CustomContainer\CustomBancoLib\CustomBancoLib\CustomBancoLib\bin\Debug\net6.0\CustomBancoLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
