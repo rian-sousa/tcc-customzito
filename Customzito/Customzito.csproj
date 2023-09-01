@@ -15,10 +15,14 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Pages\Customizados\" />
-    <Folder Include="Pages\Masculino\" />
-    <Folder Include="Pages\Feminino\" />
-    <Folder Include="Pages\Sobre\" />
+    <Folder Include="Views\Customizados\" />
+    <Folder Include="Views\Masculino\" />
+    <Folder Include="Views\Feminino\" />
+    <Folder Include="Views\Sobre\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\plugins\Visualizer\Main\main.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,7 +32,7 @@
 
   <ItemGroup>
     <Reference Include="CustomBancoLib">
-      <HintPath>..\..\CustomContainer\CustomBancoLib\CustomBancoLib\CustomBancoLib\bin\Debug\net6.0\CustomBancoLib.dll</HintPath>
+      <HintPath>D:\Work\Workspace\Projeto TCC\CustomContainer\CustomBancoLib\CustomBancoLib\CustomBancoLib\bin\Debug\net6.0\CustomBancoLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 

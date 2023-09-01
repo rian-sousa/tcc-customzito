@@ -32,14 +32,14 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-sm-center">
                     <ul class="navbar-nav mr-auto header-nav-itens-font-style">
                         <li class="nav-item titulo-item">
-                            <a class="nav-link" asp-area="" asp-page="~/Customizados/Index">coleções</a>
+                            <a class="nav-link" asp-area="" asp-page="">coleções</a>
                         </li>
                         <li class="nav-item titulo-item">
-                            <a class="nav-link" asp-area="" asp-page="~/Sobre/Index">sobre</a>
+                            <a class="nav-link" asp-area="" asp-page="">sobre</a>
                         </li>
-                        @*<li class="nav-item titulo-item">
-                            @Html.ActionLink("stock","Index","Stock");
-                        </li>*@
+                        <li class="nav-item titulo-item">
+                            @Html.ActionLink("stock","Index","Stock")
+                        </li>
                     </ul>              
                     <form class="form-inline my-2 my-md-4 titulo-form">
                         <input class="form-control form-control-sm" type="text" placeholder="Pesquisar" aria-label="Search">
@@ -67,6 +67,9 @@
 
     <!-- Bootstrap -->
     <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Three JS-->
+    <script src="~/js/es-module-shims.js"></script>
 
 
     @await RenderSectionAsync("Scripts", required: false)

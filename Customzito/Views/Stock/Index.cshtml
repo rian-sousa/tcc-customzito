@@ -2,11 +2,36 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "_Layout";
+
     var Total = TempData["QtdColecao"];
     TempData["QtdColecao"] = null;
 
 }
-
-<div>
-    @Total OPAAA
+<div class="flex-shrink-0">
+    <div class="d-flex flex-column h-100">
+        <div class="container">
+            <h1 class="mt-5">Visualização 3d</h1>
+            <p class="lead">
+                Aqui tem o prototipo de uma tela 3d
+            </p>
+            <p>
+                O QtdColecao ta em @Total
+            </p>
+        </div>
+        <div class="container">
+            <h2>Aqui esta a cena</h2>
+            <script type="module">iniciarScene(); render();</script>
+        </div>
+    </div>
 </div>
+
+@section Scripts
+{
+    <script src="/plugins/Visualizer/Main/three.js"></script>
+    <script src="/plugins/Visualizer/Main/OrbitControls.js"></script>
+    <script src="/plugins/Visualizer/Main/GLTFLoader.js"></script>
+    <script src="/plugins/Visualizer/Main/main.js"></script>
+        
+    
+}
