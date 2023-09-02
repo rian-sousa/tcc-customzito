@@ -1,54 +1,92 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Customzito</title>
+    <title>@ViewData["Title"]</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
     <!-- Customzito CSS -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Customzito.styles.css" asp-append-version="true" />
 
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tulpen+One&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/Index">
-                    <img src="support/src/navLogo.png" alt="" style="width:auto; height: auto; max-width: 100px; max-height:100px " />
-                </a>
-            </div>
-            <a class="navbar-brand header-nav-font-style-size titulo-nav-spacing" asp-area="" asp-page="/Index">CUSTOMZITO</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="./images/logo.svg"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="container">                
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-sm-center">
-                    <ul class="navbar-nav mr-auto header-nav-itens-font-style">
-                        <li class="nav-item titulo-item">
-                            <a class="nav-link" asp-area="" asp-page="~/Customizados/Index">coleções</a>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><img src="./images/logo-mobile.svg"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body align-items-center">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Início</a>
                         </li>
-                        <li class="nav-item titulo-item">
-                            <a class="nav-link" asp-area="" asp-page="~/Sobre/Index">sobre</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sobre</a>
                         </li>
-                        @*<li class="nav-item titulo-item">
-                            @Html.ActionLink("stock","Index","Stock");
-                        </li>*@
-                    </ul>              
-                    <form class="form-inline my-2 my-md-4 titulo-form">
-                        <input class="form-control form-control-sm" type="text" placeholder="Pesquisar" aria-label="Search">
+                        <li class="nav-item dropdown" data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+                                Custom
+                            </a>
+                            <ul class="dropdown dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="#">Coleções</a></li>
+                                <li><a class="dropdown-item" href="#">Personalizar</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control" type="search" placeholder="Nome do Produto" aria-label="Search">
+                        <button class="btn btn-success" type="submit">Buscar</button>
                     </form>
-                </div>                
-            </div>      
-
-        </nav>
-    </header>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Carrossel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./images/banner1.svg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./images/banner2.svg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./images/banner3.svg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -67,8 +105,8 @@
 
     <!-- Bootstrap -->
     <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

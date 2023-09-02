@@ -1,56 +1,7 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tulpen+One&display=swap');
 
 body {
-  margin-bottom: 60px;
-}
-
-.header-nav-font-style-size {
-    font-family: "Playfair Display", serif;
-    font-weight: bold;
-    font-size: 30px;
-}
-
-.header-nav-itens-font-style {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 20px;
-}
-
-.titulo-nav-spacing{
-    letter-spacing: 20px;
-}
-
-.titulo-item{
-  letter-spacing: 2px;
-}
-
-.titulo-form{
-    margin: 0 0 0 70px;
-}
-
-.titulo-container{
-    letter-spacing: 9px;
-    font-size: xx-large;
-    text-align: center;
-    color: lightslategrey;
-    font-family: 'Courier New';
-    opacity: 0.2;
-    
-}
-.card-img-collections {
-    height: 225px;
-    width: 100%;
-    display: block;
+    font-style: normal;
 }
