@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Customzito.Pages
+namespace Customzito.Views.Home
 {
     public class IndexModel : PageModel
     {
