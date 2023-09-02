@@ -2,7 +2,7 @@
 @using Customzito.Views.Home;
 @model IndexModel
 @{
-    //ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Customzito";
 }
 
 @*<div class="text-center">
@@ -10,109 +10,34 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>*@
 
-<div class="mt-4 p-5 bg-light text-dark rounded">
-    <div class="container">
-        <h1 class="display-1 header-nav-font-style-size titulo-container">bem-vindo ao customzito!</h1>
-        <figure>
-            <blockquote class="blockquote">
-                <p>
-                    "A Customzito é uma iniciativa que busca disponibilizar uma plataforma livre para todos aqueles que desejam disponibilizar
-                    suas grandes artes para venda, a criatividade é nossa aliada, e o céu é o limite!"
-                </p>
-            </blockquote>
-            <figcaption class="blockquote-footer">
-                <a href="#" style="text-decoration: none; color: lightslategray;"> Saiba Mais »</a>
-            </figcaption>
-        </figure>
+<!-- Carrossel -->
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
-</div>
-
-<div class="album py-5 bg-gradient">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top card-img-collections" src="/support/src/chorao-travis.jpg" data-holder-rendered="true">
-                    <div class="card-body">
-                        <div class="card-title" style="font-weight: bold">
-                            COLEÇÕES CUSTOMZITTERS
-                        </div>
-
-                        <p class="card-text">Aqui estão todas as roupas customizadas.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Ver Mais</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top card-img-collections" src="/support/src/masculino.jpg" data-holder-rendered="true">
-                    <div class="card-body">
-                        <div class="card-title" style="font-weight: bold">
-                            COLEÇÕES TRAPSTAR
-                        </div>
-
-                        <p class="card-text">Aqui estão todas as roupas masculinas.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Ver Mais</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top card-img-collections" src="/support/src/feminino.jpg" data-holder-rendered="true">
-                    <div class="card-body">
-                        <div class="card-title" style="font-weight: bold">
-                            COLEÇÕES CLÁSSICAS
-                        </div>
-
-                        <p class="card-text">Aqui estão todas as roupas femininas.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Ver Mais</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="./images/banner1.svg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="./images/banner2.svg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="./images/banner3.svg" class="d-block w-100" alt="...">
         </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
 
-<div class="jumbotron"> 
-    <section id="features" class="features">
-        <div class="container header-nav-itens-font-style">
 
-            <div class="section-title aos-init aos-animate" data-aos="fade-up">
 
-                <h2 style="font-weight: bold">Quem somos</h2>
-                <p style="font-size: 12px">Liberte sua creatividade</p>
-            </div>
-
-            <div class="row aos-init aos-animate" data-aos="fade-left" style="font-size: 15px">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pulvinar, risus ut gravida mattis,
-                risus orci euismod turpis, vitae lacinia tellus felis ut mi. Sed finibus rutrum porttitor.
-                Praesent pellentesque dolor at mauris pharetra, non cursus purus lacinia. Donec hendrerit quam id ipsum fringilla,
-                quis tristique ex placerat. Nulla ut pretium felis, et commodo orci. Quisque mollis risus vitae elit pulvinar,
-                quis hendrerit dolor blandit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-                Maecenas vitae mauris pulvinar lacus euismod cursus at quis diam. Ut ornare quam nulla, nec facilisis ligula consequat at
-                . Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur vestibulum convallis urna,
-                quis dapibus enim sagittis et. Ut mollis sodales nisi ac ultrices. Curabitur sapien sem, euismod vitae elementum sit amet, bibendum et eros. Ut porttitor,
-                magna non placerat rutrum, lorem sapien facilisis eros, id sollicitudin arcu diam nec tellus.
-            </div>
-
-        </div>
-    </section>
-</div>
 

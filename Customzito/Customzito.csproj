@@ -32,7 +32,7 @@
 
   <ItemGroup>
     <Reference Include="CustomBancoLib">
-      <HintPath>D:\Work\Workspace\Projeto TCC\CustomContainer\CustomBancoLib\CustomBancoLib\CustomBancoLib\bin\Debug\net6.0\CustomBancoLib.dll</HintPath>
+      <HintPath>..\..\tcc-customzito-cl\CustomBancoLib\bin\Debug\net6.0\CustomBancoLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 
