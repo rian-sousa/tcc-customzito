@@ -14,6 +14,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Coleções\Lancamento.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Coleções\Index.cshtml" />
+    <Content Remove="Views\Coleções\Lancamento.cshtml" />
+    <Content Remove="Views\Coleções\Lançamento.cshtml" />
+    <Content Remove="Views\Coleções\Quebradas.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Views\Customizados\" />
     <Folder Include="Views\Masculino\" />
@@ -22,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Coleções\Quebradas.cshtml" />
     <None Include="wwwroot\plugins\Visualizer\Main\main.js" />
   </ItemGroup>
 
@@ -34,6 +46,14 @@
     <Reference Include="CustomBancoLib">
       <HintPath>..\..\tcc-customzito-cl\CustomBancoLib\bin\Debug\net6.0\CustomBancoLib.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Coleções\Quebradas.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Coleções\Quebradas.cshtml" />
   </ItemGroup>
 
 </Project>

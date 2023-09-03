@@ -6,3 +6,7 @@ body {
     font-size: 20px;
     font-style: normal;
 }
+
+.searchBtn{
+    background-color: var(--verde-claro)
+}
