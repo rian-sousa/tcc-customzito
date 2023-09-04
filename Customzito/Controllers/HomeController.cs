@@ -18,9 +18,5 @@ namespace Customzito.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Quebradas()
-        {
-            return View();  
-        }
     }
 }
