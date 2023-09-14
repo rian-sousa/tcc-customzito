@@ -14,15 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Views\Customizados\" />
     <Folder Include="Views\Masculino\" />
     <Folder Include="Views\Feminino\" />
     <Folder Include="Views\Sobre\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\plugins\Visualizer\Main\main.js" />
+    <Folder Include="wwwroot\plugins\" />
   </ItemGroup>
 
   <ItemGroup>

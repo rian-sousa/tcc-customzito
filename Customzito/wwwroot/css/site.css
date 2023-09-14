@@ -6,3 +6,8 @@ body {
     font-size: 20px;
     font-style: normal;
 }
+
+.custom-area{
+    max-width: 800px;
+    max-height: 600px;
+}

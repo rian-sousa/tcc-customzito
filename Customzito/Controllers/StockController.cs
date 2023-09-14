@@ -16,8 +16,8 @@ namespace Customzito.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var result = await _czContext.TbColecao.CountAsync();
-            TempData["QtdColecao"] = result;
+            //var result = await _czContext.TbColecao.CountAsync();
+            //TempData["QtdColecao"] = result;
 
             return View();
         }
