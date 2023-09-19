@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Services\Support\Dlls\" />
     <Folder Include="Views\Customizados\" />
     <Folder Include="Views\Masculino\" />
     <Folder Include="Views\Feminino\" />
@@ -28,7 +29,7 @@
 
   <ItemGroup>
     <Reference Include="CustomBancoLib">
-      <HintPath>..\..\tcc-customzito-cl\CustomBancoLib\bin\Debug\net6.0\CustomBancoLib.dll</HintPath>
+      <HintPath>Services\Support\Dlls\CustomBancoLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 
