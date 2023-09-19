@@ -7,7 +7,6 @@ body {
     font-style: normal;
 }
 
-.custom-area{
-    max-width: 800px;
-    max-height: 600px;
+.searchBtn{
+    background-color: var(--verde-claro)
 }
