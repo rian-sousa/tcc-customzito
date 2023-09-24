@@ -1,10 +1,16 @@
-﻿$(document).ready(function () {
+﻿
+function MostrarCanvasCustom() {
+
+    
+}
+
+$(document).ready(function () {
 
     const imagePath = '../images/camisa1.png';
 
     const canvas = new fabric.Canvas('canvas');
 
-    fabric.Image.fromURL('images/camisa1.png', function (img) {
+    fabric.Image.fromURL('images/custom-bases/cortavento-removebg-preview.png', function (img) {
 
         img.set({
             left: 70,  // Posição horizontal (x)
@@ -12,7 +18,7 @@
             scaleX: 1, // Escala horizontal (opcional)
             scaleY: 1  // Escala vertical (opcional)
         });
-        
+
         canvas.setBackgroundImage(img);
         canvas.renderAll();
     });
@@ -32,5 +38,6 @@
             reader.readAsDataURL(file);
         }
     })
+    
 
 });
