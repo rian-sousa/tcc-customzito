@@ -10,3 +10,7 @@ body {
 .searchBtn{
     background-color: var(--verde-claro)
 }
+
+.custom-text{
+    font-size: 15px;
+}
