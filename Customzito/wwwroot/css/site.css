@@ -10,3 +10,8 @@ body {
 .searchBtn{
     background-color: var(--verde-claro)
 }
+
+.botao-padrao {
+    background-color: var(--verde-claro);
+    color: black;
+}
