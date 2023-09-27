@@ -4,21 +4,37 @@
 *@
 
 
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-6">
-            <!-- Canvas Fabric.js -->
-            <canvas id="canvas" width="500" height="200" class="mt-2 ml-5 justify-content-center align-content-center" style="border: 1px solid #000;"></canvas>
-        </div>
-        <div class="col-md-8">
-            <div class="card-body custom-text">
-                <h1 class="card-title">Customizar Roupa</h1>
-                <div class="col custom-text">
-                    <!-- Área de upload de imagens -->
-                    <h2 class="custom-text">Selecione a sua estampa</h2>
-                    <input type="file" id="imageUpload" accept="image/*">
-                    <button id="addImageBtn" class="btn btn-primary mt-2 custom-text">Adicionar Imagem</button>
-                    
+<div class="card mb-3 mt-4 shadow-lg" >
+    <div class="row g-0 ml-5 align-content-center" style="margin-left: 10%;">
+        <div class="col-md-12">
+            
+            <div class="card-body custom-text">              
+                <h1 class=" mt-2">Customizar Roupa</h1>
+                <div class="row">
+                    <div class="col-md-8 mr-5 mt-4">
+                        <!-- Canvas -->
+                        <canvas id="canvas" width="700" height="400" class="rounded border border-5 justify-content-center align-content-center canvas "></canvas>
+
+                        <div id="funcoes">
+                            <input type="file" id="imageUpload" accept="image/*">
+                            <button id="addImageBtn" class="btn btn-primary mt-2 custom-text">Adicionar Imagem</button>
+                            <button type="button" id="salvar" class="btn btn-success custom-text mt-2" >Salvar Criação</button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <!-- Menu de imagens -->
+                        <div class="col custom-text">                            
+                            <div class="d-flex flex-column align-items-center">
+                                <h2 class="custom-text justify-content-end align-content-end ">Selecione o modelo da roupa</h2>
+                                <img class="rounded-2 icones-menu-custom img-thumbnail opt" src="images/custom-bases/cortavento.png" data-src="images/custom-bases/cortavento.png" />
+                                <img class="rounded-2 icones-menu-custom img-thumbnail opt" src="images/custom-bases/blusadefrio.png" data-src="images/custom-bases/blusadefrio.png" />
+                                <img class="rounded-2 icones-menu-custom img-thumbnail opt" style="height: 200px;" src="images/custom-bases/calcamoletom.png" data-src="images/custom-bases/calcamoletom.png" />
+                                <img class="rounded-2 icones-menu-custom img-thumbnail opt" src="images/custom-bases/camisa1.png" data-src="images/custom-bases/camisa1.png" />
+                                <img class="rounded-2 icones-menu-custom img-thumbnail opt" src="images/custom-bases/mangalonga.png" data-src="images/custom-bases/mangalonga.png" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
