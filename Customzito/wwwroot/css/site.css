@@ -16,6 +16,43 @@ body {
 }
 
 .icones-menu-custom{
-    width: 180px;
-    height: 110px;
+    width: 900px;
+    height: 200px;
+}
+
+/* Estilo base dos quadrados */
+.quadrado {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+/* Cores dos quadrados */
+.branco {
+    background-color: white;
+}
+
+.preto {
+    background-color: black;
+}
+
+.rosa {
+    background-color: pink;
+}
+
+.azul {
+    background-color: blue;
+    color: white; /* Adicionando cor de texto para melhor visibilidade no fundo azul */
+}
+
+.vermelho {
+    background-color: red;
+    color: white; /* Adicionando cor de texto para melhor visibilidade no fundo vermelho */
+}
+
+/* Estilo do menu */
+.menu {
+   /*text-align: center;*/
 }
