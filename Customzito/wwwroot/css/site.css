@@ -56,3 +56,9 @@ body {
 .menu {
    /*text-align: center;*/
 }
+}
+
+.botao-padrao {
+    background-color: var(--verde-claro);
+    color: black;
+}
