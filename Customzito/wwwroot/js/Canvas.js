@@ -46,6 +46,14 @@ $(document).ready(function () {
             selectable: false // Evita que a imagem seja selecionável
         });
 
+        // Crie uma instância do filtro HueRotation com o ângulo desejado
+        const hueRotationFilter = new fabric.Image.filters.HueRotation({
+            rotation: 45 // Altere o ângulo conforme necessário
+        });
+
+        // Adicione o filtro à imagem
+        img.filters.push(hueRotationFilter);
+
         canvas.setBackgroundImage(img);
         canvas.renderAll();
     });
@@ -89,6 +97,10 @@ $(document).ready(function () {
             canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
         });
     });
+
+    $('#color').on('click', function () {
+        
+    })
 
     $('#salvar').on('click', function () {
         SalvarCustom();        
