@@ -16,16 +16,12 @@ namespace Customzito.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var obj = new TB_Produto
-            {
-                Titulo = "Broca-Shirt",
-                Descricao = "Blusa do brocasito, versão exclusiva, usada num show em brasília",
-                Preco = 420,
-                qtd = 1,
-                Avaliacao = 3.22M,
-            };
+            var Produtos = await _czContext.TbProduto
+                .ToListAsync();
 
-            return View(obj);
+            ViewBag.Produtos = Produtos;    
+
+            return View();
         }
     }
 }

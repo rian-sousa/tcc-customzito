@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="Support\**" />
+    <Compile Remove="wwwroot\support\NewFolder\**" />
     <Content Remove="Support\**" />
+    <Content Remove="wwwroot\support\NewFolder\**" />
     <EmbeddedResource Remove="Support\**" />
+    <EmbeddedResource Remove="wwwroot\support\NewFolder\**" />
     <None Remove="Support\**" />
+    <None Remove="wwwroot\support\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>

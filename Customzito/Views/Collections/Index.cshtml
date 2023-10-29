@@ -2,54 +2,72 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+
+
 }
 
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+@*<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-gradient bg-clarear bg-image">
+    <img src="/images/fundo-collections-verdin.png" />
+
     <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 fw-normal">CUSTOMZITO COLLECTIONS</h1>
-        <p class="lead fw-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
-        <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+
+        <h1 class="fw-normal colecoes-text" ></h1>
+        <p class="lead fw-normal fs-4 colecoes-text ">na customização, nós quebramos a banca e deixamos sua quebrada no estilo! Vem pra Customzito Collections, o bonde tá só começando.</p>
     </div>
-    <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+</div>*@
+
+<div class="p-5 text-center " style="
+    background-image: url('/images/fundo-collections-verdin-transformed.png');
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 99%;
+    background-size: 90% 900px;
+    height: 500px;
+  ">
+    <div class="mask mt-5 rounded-1" style="background-color: hsla(0, 0%, 0%, 1);">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="text-white">
+                <h1 class="mt-5 mb-3 colecoes-text-titulo text-size-lg"><b>CUSTOMZITO COLLECTIONS</b></h1>
+                <h4 class="mb-5 colecoes-text">na customização, nós quebramos a banca e deixamos sua quebrada no estilo! Vem pra Customzito Collections, o bonde tá só começando.</h4>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="bg-dark me-md-3 pt-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 py-3">
-            <h2 class="display-5">Another headline</h2>
-            <p class="lead">And an even wittier subheading.</p>
-        </div>
-        <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-    <div class="bg-light me-md-3 pt-3 pt-md-5 px-md-5 text-center overflow-hidden">
-        <div class="my-3 p-3">
-            <h2 class="display-5">Another headline</h2>
-            <p class="lead">And an even wittier subheading.</p>
-        </div>
-        <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-    <div class="bg-dark me-md-3 pt-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 py-3">
-            <h2 class="display-5">Another headline</h2>
-            <p class="lead">And an even wittier subheading.</p>
-        </div>
-        <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-    <div class="bg-light me-md-3 pt-3 pt-md-5 px-md-5 text-center overflow-hidden">
-        <div class="my-3 p-3">
-            <h2 class="display-5">Another headline</h2>
-            <p class="lead">And an even wittier subheading.</p>
-        </div>
-        <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-    <div class="bg-dark me-md-3 pt-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-        <div class="my-3 py-3">
-            <h2 class="display-5">Another headline</h2>
-            <p class="lead">And an even wittier subheading.</p>
-        </div>
-        <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
+
+    @foreach (var item in ViewBag.Colecoes)
+    {
+        @if(item.IdColecao % 2 == 1)
+        {
+            <div class="bg-dark me-md-3 pt-3 pt-md-5 px-md-5 text-center text-white overflow-hidden rounded-1">
+                <div class="my-3 py-3">
+                    <h2 class="display-5 colecoes-text colecoes-text-card ">@item.Descricao</h2>
+                    @if(item.Limitado == true)
+                    {
+                        <p class="lead text-warning colecoes-text-limitado">EDIÇÃO LIMITADA!</p>
+                    }
+                    
+                </div>
+            </div>            
+        }
+
+        @if(item.IdColecao % 2 == 0)
+        {
+            <div class="bg-light me-md-3 pt-3 pt-md-5 px-md-5 text-center overflow-hidden rounded-1 border border-secondary">
+                <div class="my-3 py-3">
+                    <h2 class="display-5 colecoes-text colecoes-text-card">@item.Descricao</h2>
+                    @if (item.Limitado == true)
+                    {
+                        <p class="lead text-warning colecoes-text-limitado">EDIÇÃO LIMITADA!</p>
+                    }
+
+                </div>
+            </div>
+        }
+        
+    }
+    
 </div>
 

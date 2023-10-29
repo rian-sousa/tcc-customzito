@@ -19,6 +19,8 @@
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tulpen+One&display=swap" rel="stylesheet" />
+    <link href="~/support/fonts/GochiHand-Regular.ttf" rel="stylesheet" />
+
 
     <!-- Dropzone CSS -->
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
@@ -43,18 +45,18 @@
                                 <a class="nav-link active" aria-current="page" href="@Url.Action("Index","Home")">Início</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index","Item")">Item</a>
+                                <a class="nav-link" href="@Url.Action("Index","Item")">Produtos</a>
                             </li>
-                            <li class="nav-item dropdown" data-bs-toggle="dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false" data-bs-toggle="dropdown">
                                     Coleções
                                 </a>
                                 <ul class="dropdown dropdown-menu dropdown-menu-dark">
                                     <li>
-                                        <a class="dropdown-item" href="@Url.Action("Quebradas", "Collections")">Quebradas</a>
+                                        <a class="dropdown-item" href="@Url.ActionLink("Index", "Collections")">Quebradas</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="@Url.Action("Classic", "Collections")">Classic</a>
+                                        <a class="dropdown-item" href="@Url.ActionLink("Classic", "Collections")">Classic</a>
                                     </li>
                                 </ul>
                             </li>
