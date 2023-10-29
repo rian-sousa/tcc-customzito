@@ -18,7 +18,7 @@
     <Folder Include="Views\Masculino\" />
     <Folder Include="Views\Feminino\" />
     <Folder Include="Views\Sobre\" />
-    <Folder Include="wwwroot\plugins\" />
+    <Folder Include="wwwroot\images\custom-bases\" />
   </ItemGroup>
 
   <ItemGroup>
