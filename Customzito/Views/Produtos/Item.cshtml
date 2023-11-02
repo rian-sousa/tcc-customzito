@@ -60,7 +60,7 @@
                             <span class="text-danger ms-2">Indisponível!</span>
                         }                        
                     </div>
-
+                    
                     <div class="mb-3">
                         <span class="h5">R$@Model.Preco</span>
                     </div>
@@ -71,16 +71,16 @@
 
                     <div class="row">
                         <dt class="col-3">Tipo:</dt>
-                        <dd class="col-9">Manga Longa</dd>
+                        <dd class="col-9">@ViewBag.Tipo</dd>
 
                         <dt class="col-3">Cor:</dt>
-                        <dd class="col-9">Azul-Rian</dd>
+                        <dd class="col-9">@Model.Cor</dd>
 
                         <dt class="col-3">Material:</dt>
-                        <dd class="col-9">Algodão, Elastano</dd>
+                        <dd class="col-9">@Model.Material</dd>
 
                         <dt class="col-3">Brand:</dt>
-                        <dd class="col-9">Custom</dd>
+                        <dd class="col-9">@Model.Marca</dd>
                     </div>
 
                     <hr />

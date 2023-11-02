@@ -13,6 +13,6 @@ namespace Customzito.Services.CZDatabase
         public DbSet<TB_Colecao> TbColecao { get; set;}
         public DbSet<TB_Carrinho> TbCarrinho { get; set; }
         public DbSet<TD_TipoUsuario> TdTipoUsuario { get; set; }
-        public DbSet<TD_TipoVestimenta> TdTipoVestimenta { get; set; }
+        public DbSet<TD_TiposVestimenta> TdTipoVestimenta { get; set; }
     }
 }

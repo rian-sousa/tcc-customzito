@@ -45,7 +45,7 @@
                                 <a class="nav-link active" aria-current="page" href="@Url.Action("Index","Home")">Início</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index","Item")">Produtos</a>
+                                <a class="nav-link" href="@Url.Action("Index","Produtos")">Produtos</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false" data-bs-toggle="dropdown">
@@ -53,18 +53,18 @@
                                 </a>
                                 <ul class="dropdown dropdown-menu dropdown-menu-dark">
                                     <li>
-                                        <a class="dropdown-item" href="@Url.ActionLink("Index", "Collections")">Quebradas</a>
+                                        <a class="dropdown-item" href="@Url.Action("Index", "Collections")">Quebradas</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="@Url.ActionLink("Classic", "Collections")">Classic</a>
+                                        <a class="dropdown-item" href="@Url.Action("Classic", "Collections")">Classic</a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                         <div>
                             <form class="d-flex input-group col-xs-2" role="search">
-                                <input class="form-control rounded-0" type="text" placeholder="Nome do Produto" aria-label="Recipient">
-                                <button class=" searchBtn btn btn-outline-secondary rounded-0" type="button" id="button-addon2">Buscar</button>
+                                <input class="form-control rounded-1" type="text" placeholder="Nome do Produto" aria-label="Recipient">
+                                <button class=" searchBtn btn btn-outline-secondary rounded-1" type="button" id="button-addon2">Buscar</button>
                             </form>
                         </div>
                     </div>

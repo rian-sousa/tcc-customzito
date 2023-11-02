@@ -18,10 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Services\Support\Dlls\" />
     <Folder Include="Views\Customizados\" />
     <Folder Include="Views\Masculino\" />
     <Folder Include="Views\Feminino\" />
-    <Folder Include="Views\Sobre\" />
     <Folder Include="wwwroot\images\custom-bases\" />
   </ItemGroup>
 
@@ -33,7 +33,7 @@
 
   <ItemGroup>
     <Reference Include="CustomBancoLib">
-      <HintPath>Services\Support\Dlls\CustomBancoLib.dll</HintPath>
+      <HintPath>..\..\CustomBancoLib\CustomBancoLib\bin\Debug\net6.0\CustomBancoLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 

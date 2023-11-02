@@ -55,11 +55,13 @@ body {
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: #000;
     letter-spacing: 2px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
-.produtos-text-preco{
-    font-size: 20px;
+.produtos-text-preco {
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #000;
+    font-size: 30px;
 }
 
 .bg-clarear{
@@ -106,4 +108,9 @@ body {
 .botao-padrao {
     background-color: var(--verde-claro);
     color: black;
+}
+
+a.no-underline {
+    text-decoration: none; /* Remove o sublinhado */
+    color: inherit; /* Herda a cor do texto pai, que é preta no exemplo */
 }

@@ -1,0 +1,49 @@
+﻿@model CustomBancoLib.TB_Produto;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<div class="p-5 text-center " style="
+    background-image: url('/images/fundo-collections-verdin-transformed.png');
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 99%;
+    background-size: 90% 900px;
+    height: 500px;
+  ">
+    <div class="mask mt-5 rounded-1" style="background-color: hsla(0, 0%, 0%, 1);">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="text-white">
+                <h1 class="mt-5 mb-3 colecoes-text-titulo text-size-lg"><b>Nossos Produtos</b></h1>
+                <h4 class="mb-5 colecoes-text">confira nossas roupas com estilo das ruas!</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container overflow-hidden">
+    <div class="row">
+        @foreach (var item in ViewBag.Produtos)
+        {
+            <div class="col-3">
+                <a href="@Url.Action("Item","Produtos", new { id = item.IdProduto})" class="no-underline">
+                    <div class="bg-light mt-4 text-center overflow-hidden rounded-1 border border-secondary">
+                        <div class="my-3 py-3">
+                            <h2 class="display-5 produtos-text-titulo">@item.Titulo</h2>
+                            <p class="lead produtos-text-descricao">
+                                @item.Descricao <br />
+                                @*<img style="width: 100px; height: 100px;" src="https://www.shutterstock.com/shutterstock/photos/2162642505/display_1500/stock-photo-bear-trap-isolated-on-white-background-metal-trap-addiction-hunting-poaching-credit-mortgage-2162642505.jpg" />*@
+                            </p>
+                            <label class="text-warning produtos-text-preco">R$@item.Preco</label>
+                        </div>
+                    </div>
+                </a>                
+            </div>
+        }
+    </div>
+    
+
+</div>
