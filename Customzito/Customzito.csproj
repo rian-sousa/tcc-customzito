@@ -7,18 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\**" />
     <Compile Remove="Support\**" />
     <Compile Remove="wwwroot\support\NewFolder\**" />
+    <Content Remove="Areas\**" />
     <Content Remove="Support\**" />
     <Content Remove="wwwroot\support\NewFolder\**" />
+    <EmbeddedResource Remove="Areas\**" />
     <EmbeddedResource Remove="Support\**" />
     <EmbeddedResource Remove="wwwroot\support\NewFolder\**" />
+    <None Remove="Areas\**" />
     <None Remove="Support\**" />
     <None Remove="wwwroot\support\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Identity\Account\Logout\" />
+    <Compile Include="Areas\Identity\Data\CustomzitoContext.cs" />
+    <Compile Include="Areas\Identity\Data\CustomzitoUser.cs" />
+    <Compile Include="Areas\Identity\Pages\Account\ForgotPassword.cshtml.cs" />
+    <Compile Include="Areas\Identity\Pages\Account\Login.cshtml.cs" />
+    <Compile Include="Areas\Identity\Pages\Account\Logout.cshtml.cs" />
+    <Compile Include="Areas\Identity\Pages\Account\Register.cshtml.cs" />
+    <Compile Include="Areas\Identity\Pages\Account\ResetPassword.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Services\Support\Dlls\" />
     <Folder Include="Views\Customizados\" />
     <Folder Include="Views\Masculino\" />
@@ -27,8 +40,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
+    <None Include="Areas\Identity\Pages\Account\ForgotPassword.cshtml" />
+    <Content Include="Areas\Identity\Pages\Account\Login.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Logout.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Register.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\ResetPassword.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\_ViewImports.cshtml" />
+    <Content Include="Areas\Identity\Pages\_ValidationScriptsPartial.cshtml" />
+    <Content Include="Areas\Identity\Pages\_ViewImports.cshtml" />
+    <Content Include="Areas\Identity\Pages\_ViewStart.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.24" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.23" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
   </ItemGroup>
 
