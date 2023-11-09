@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Identity\Account\Logout\" />
     <Folder Include="Services\Support\Dlls\" />
     <Folder Include="Views\Customizados\" />
     <Folder Include="Views\Masculino\" />
