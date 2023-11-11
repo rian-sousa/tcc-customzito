@@ -43,7 +43,7 @@
     <None Include="Areas\Identity\Pages\Account\ForgotPassword.cshtml" />
     <Content Include="Areas\Identity\Pages\Account\Login.cshtml" />
     <None Include="Areas\Identity\Pages\Account\Logout.cshtml" />
-    <None Include="Areas\Identity\Pages\Account\Register.cshtml" />
+    <Content Include="Areas\Identity\Pages\Account\Register.cshtml" />
     <None Include="Areas\Identity\Pages\Account\ResetPassword.cshtml" />
     <None Include="Areas\Identity\Pages\Account\_ViewImports.cshtml" />
     <Content Include="Areas\Identity\Pages\_ValidationScriptsPartial.cshtml" />

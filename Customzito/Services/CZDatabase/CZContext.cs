@@ -22,7 +22,7 @@ namespace Customzito.Services.CZDatabase
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
-        public DbSet<IdentityUser> IdentityUsers { get; set; }
+        public DbSet<AspNetUser> AspNetUser { get; set; }
 
         public CZContext(DbContextOptions<CZContext> options) : base(options) { }
 

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Customzito.Areas.Identity.Data;
+using CustomBancoLib;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,15 +15,17 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<CZContext>(options => 
                 options.UseSqlServer(connectionString));
 
-builder.Services.AddScoped<UserManager<IdentityUser>>();
+builder.Services.AddScoped<UserManager<AspNetUser>>();
 //builder.Services.AddScoped<UserManager<CustomzitoUser>>();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<AspNetUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<CZContext>()
     .AddDefaultTokenProviders();
 
 
 builder.Services.AddRazorPages();
+
+builder.Services.AddMvc();
 
 builder.Services.Configure<IdentityOptions>(options =>
 {

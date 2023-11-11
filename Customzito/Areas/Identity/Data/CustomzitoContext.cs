@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Customzito.Areas.Identity.Data
 {
-    public class CustomzitoContext : IdentityDbContext<IdentityUser>
+    public class CustomzitoContext : IdentityDbContext<AspNetUser>
     {
         public CustomzitoContext(DbContextOptions<CZContext> options)
             : base(options)
