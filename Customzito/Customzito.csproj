@@ -45,7 +45,7 @@
     <None Include="Areas\Identity\Pages\Account\Logout.cshtml" />
     <Content Include="Areas\Identity\Pages\Account\Register.cshtml" />
     <None Include="Areas\Identity\Pages\Account\ResetPassword.cshtml" />
-    <None Include="Areas\Identity\Pages\Account\_ViewImports.cshtml" />
+    <Content Include="Areas\Identity\Pages\Account\_ViewImports.cshtml" />
     <Content Include="Areas\Identity\Pages\_ValidationScriptsPartial.cshtml" />
     <Content Include="Areas\Identity\Pages\_ViewImports.cshtml" />
     <Content Include="Areas\Identity\Pages\_ViewStart.cshtml" />

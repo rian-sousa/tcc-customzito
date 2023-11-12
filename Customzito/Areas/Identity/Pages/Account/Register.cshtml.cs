@@ -15,20 +15,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using CustomBancoLib;
+using System.Text.RegularExpressions;
 
 namespace Customzito.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<AspNetUser> _signInManager;
-        private readonly UserManager<AspNetUser> _userManager;
+        private readonly SignInManager<AspNetUsers> _signInManager;
+        private UserManager<AspNetUsers> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<AspNetUser> userManager,
-            SignInManager<AspNetUser> signInManager,
+            UserManager<AspNetUsers> userManager,
+            SignInManager<AspNetUsers> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -36,6 +37,7 @@ namespace Customzito.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+
         }
 
         [BindProperty]
@@ -76,8 +78,16 @@ namespace Customzito.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new AspNetUser { UserName = Input.Email, Email = Input.Email };
+                var match = Regex.Match(Input.Email, @"^(.*)@.*$");
+
+                var username = match.Groups[1].Value;
+
+                username = Regex.Replace(username, @"[^a-zA-Z0-9]", "");
+
+                var user = new AspNetUsers { UserName = username, Email = Input.Email };
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");

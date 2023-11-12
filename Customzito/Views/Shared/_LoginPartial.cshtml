@@ -2,8 +2,8 @@
 @using Microsoft.AspNetCore.Identity
 @using Customzito.Areas.Identity.Data
 
-@inject SignInManager<AspNetUser> SignInManager
-@inject UserManager<AspNetUser> UserManager
+@inject SignInManager<AspNetUsers> SignInManager
+@inject UserManager<AspNetUsers> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))

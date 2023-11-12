@@ -1,4 +1,5 @@
 ﻿using Customzito.Services.CZDatabase;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,7 @@ namespace Customzito.Controllers
             _czContext = context;
         }
 
+        [AllowAnonymous]
         public async Task<ActionResult> Index()
         {
             return View();

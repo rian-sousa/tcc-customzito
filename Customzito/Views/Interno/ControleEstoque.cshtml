@@ -1,0 +1,294 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_LoggedLayout.cshtml";
+
+    var lstColecoes = ViewBag.lstColecoes;
+    var lstProdutos = ViewBag.lstProdutos;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="body table-responsive border rounded mt-5" style="max-height: 500px; overflow-y: auto;">
+                <table class="table table-hover table-stripped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="letter-spacing: 3px;">
+                                Coleções
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var colecao in lstColecoes){
+                            <tr>
+                                <td scope="row">
+                                    @colecao.Descricao
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar Coleção">
+                                        edit
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>                
+            </div>
+            <button class="btn btn-success btn-sm mt-4 material-symbols-outlined" data-bs-toggle="modal" data-bs-placement="bottom" data-tt="tooltip" title="Adicionar Coleção" data-bs-target="#AdicionarColecaoModal">
+                add
+            </button>
+            <button class="btn btn-danger btn-sm mt-4 material-symbols-outlined" data-bs-toggle="modal" data-bs-placement="bottom" data-tt="tooltip" title="Remover Coleção">
+                delete
+            </button>
+        </div>
+        <div class="col">
+            <div class="body table-responsive border rounded mt-5" style="max-height: 500px; overflow-y: auto;">
+                <table class="table table-hover table-stripped" >
+                    <thead class="table-dark">
+                        <tr>
+                            
+                            <th style="letter-spacing: 3px;">
+                                Produtos
+                            </th>
+                            <th>Qtd</th>
+                            <th>Av.</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        @foreach (var produto in lstProdutos)
+                        {
+                            <tr>
+                                <td scope="row">
+                                    @produto.Descricao
+                                </td>
+                                <td>
+                                    @produto.qtd
+                                </td>
+                                <td>
+                                    @produto.Avaliacao
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar Produto">
+                                        edit
+
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-success btn-sm mt-4 material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Adicionar Coleção">
+                add
+            </button>
+            <button class="btn btn-danger btn-sm mt-4 material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Remover Coleção">
+                delete
+            </button>
+        </div>
+        <div class="col">
+            <div class="card mt-5">
+                <div class="header">
+                    <h2>GRÁFICO DE VENDAS</h2>
+                </div>
+                <div class="body">
+                    <div class="sparkline" data-type="line" data-spot-radius="3" data-highlight-spot-color="rgb(233, 30, 99)" data-highlight-line-color="#222" data-min-spot-color="rgb(233, 30, 99)" data-max-spot-color="rgb(0, 150, 136)" data-spot-color="rgb(0, 188, 212)" data-offset="90" data-width="100%" data-height="150px" data-line-width="2" data-line-color="rgb(0, 188, 212)" data-fill-color="rgba(0, 188, 212, 0.3)"><canvas width="348" height="150" style="display: inline-block; width: 348px; height: 150px; vertical-align: top;"></canvas></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Coleção-->
+<div class="modal fade" id="AdicionarColecaoModal" tabindex="-1" aria-labelledby="AdicionarColecaoModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="letter-spacing: 3px;"><b>ADICIONAR COLEÇÃO</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col align-content-center">
+                        <label for="DescricaoColecao" class="form-label">
+                            Nome da Coleção
+                        </label>
+                    </div>
+                    <div class="col align-content-center">
+                        <input type="text" id="DescricaoColecao" class="form-control" placeholder="Ex: Hoodie Bc Raff" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col align-content-center">
+                        <label for="Limitado" class="form-label">
+                            Limitado
+                        </label>
+                    </div>
+                    <div class="col align-content-center">
+                        <input type="checkbox" id="Limitado" class="form-check" />
+                    </div>
+                </div>
+                <div class="row">
+                    
+                    <div class="body table-responsive rounded mt-2" style="max-height: 500px; overflow-y: auto;">
+                        
+                        <table class="table table-hover table-stripped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th style="letter-spacing: 3px;">
+                                        Adicionar Roupas
+                                    </th>
+                                    <th>
+                                        <button class="btn btn-success btn-sm material-symbols-outlined w-100" data-tt="tooltip" data-bs-toggle="modal" data-bs-target="#AdicionarRoupaModal" data-bs-placement="top" title="Adicionar Roupa">
+                                            add
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var colecao in lstColecoes)
+                                {
+                                    <tr>
+                                        <td scope="row">
+                                            @colecao.Descricao
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary material-symbols-outlined" data-tt="tooltip" data-bs-placement="bottom" title="Editar Coleção">
+                                                edit
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar Coleção</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Roupas -->
+<div class="modal fade" id="AdicionarRoupaModal" tabindex="-1" aria-labelledby="AdicionarRoupaModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="letter-spacing: 3px;"><b>ADICIONAR ROUPA</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col align-content-center">
+                        <label for="DescricaoRoupa" class="form-label">
+                            Descrição
+                        </label>
+                    </div>
+                    <div class="col align-content-center">
+                        <input type="text" id="DescricaoRoupa" class="form-control" placeholder="Ex: Hoodie Bc Raff" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col align-content-center">
+                        <label for="Titulo" class="form-label">
+                            Titulo
+                        </label>
+                    </div>
+                    <div class="col align-content-center">
+                        <input type="text" id="Titulo" class="form-control" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col align-content-center">
+                        <label for="Prco" class="form-label">
+                            Preço
+                        </label>
+                    </div>
+                    <div class="col align-content-center">
+                        <input type="text" id="Preco" class="form-control" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col align-content-center">
+                        <label for="TipoVestimenta" class="form-label">
+                            Tipo de Vestimenta
+                        </label>
+                    </div>
+                    <div class="col align-content-center">
+                        <input type="text" id="TipoVestimenta" class="form-check" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col align-content-center">
+                        <label for="Quantidade" class="form-label">
+                            Quantidade
+                        </label>
+                    </div>
+                    <div class="col align-content-center">
+                        <input type="text" id="Quantidade" class="form-control" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col align-content-center">
+                        <label for="Cores" class="form-label">
+                            Cores
+                        </label>
+                    </div>
+                    <div class="col align-content-center">
+                        <input type="text" id="Cores" class="form-control" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col align-content-center">
+                        <label for="Materiais" class="form-label">
+                            Materiais
+                        </label>
+                    </div>
+                    <div class="col align-content-center">
+                        <input type="text" id="Materiais" class="form-control" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col align-content-center">
+                        <label for="Marca" class="form-label">
+                            Marca
+                        </label>
+                    </div>
+                    <div class="col align-content-center">
+                        <input type="text" id="Marca" class="form-control" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col align-content-center">
+                        <label for="Imagem" class="form-label">
+                            Imagem
+                        </label>
+                    </div>
+                    <div class="col align-content-center">
+                        <input type="file" id="Imagem" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar Coleção</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <!--sparkline -->
+    <script src="~/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!-- Logado js-->
+    <script src="~/js/Logado.js"></script>
+    
+}

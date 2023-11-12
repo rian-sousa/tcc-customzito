@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Customzito.Areas.Identity.Data;
 using CustomBancoLib;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,10 +18,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<CZContext>(options => 
                 options.UseSqlServer(connectionString));
 
-builder.Services.AddScoped<UserManager<AspNetUser>>();
+builder.Services.AddScoped<UserManager<AspNetUsers>>();
 //builder.Services.AddScoped<UserManager<CustomzitoUser>>();
 
-builder.Services.AddDefaultIdentity<AspNetUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<AspNetUsers>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<CZContext>()
     .AddDefaultTokenProviders();
 
@@ -44,7 +47,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
     // User settings.
     options.User.AllowedUserNameCharacters =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+    "";
     options.User.RequireUniqueEmail = false;
 });
 
@@ -59,6 +62,32 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.SlidingExpiration = true;
 });
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(config =>
+    {
+        config.Cookie.Name = "AuthCookie";
+        config.LoginPath = "/Identity/Account/Login";
+        config.AccessDeniedPath = "/Identity/Account/AccessDenied";
+        config.LogoutPath= "/Identity/Account/Logout";
+        config.ReturnUrlParameter = "returnUrl";
+        config.SlidingExpiration = true;
+        config.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+});
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(90);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -71,7 +100,16 @@ if (!app.Environment.IsDevelopment())
 
 
 //app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = ctx =>
+    {
+        // Adicione a autorização aqui se necessário
+        ctx.Context.Response.Headers.Add("Cache-Control", "no-store");
+        ctx.Context.Response.Headers.Add("Pragma", "no-cache");
+        ctx.Context.Response.Headers.Add("Expires", "-1");
+    }
+});
 
 app.UseRouting();
 

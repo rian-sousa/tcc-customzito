@@ -16,13 +16,20 @@ namespace Customzito.Services.CZDatabase
         public DbSet<TB_Carrinho> TbCarrinho { get; set; }
         public DbSet<TD_TipoUsuario> TdTipoUsuario { get; set; }
         public DbSet<TD_TiposVestimenta> TdTipoVestimenta { get; set; }
+        public DbSet<TD_Material> Materiais { get; set; }
+        public DbSet<TD_Frete> Fretes { get; set; }
+        public DbSet<TD_FaixasPrecos> FaixasPrecos { get; set; }
+        public DbSet<TB_ArquivosCustomBase> ArquivosCustomBase { get; set; }
+        public DbSet<TB_PedidoCustomizado> PedidosCustomizados { get; set; }
+        public DbSet<TD_Status> Status { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
-        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
-        public DbSet<AspNetUser> AspNetUser { get; set; }
+        public DbSet<AspNetUsers> AspNetUser { get; set; }
+        public DbSet<IdentityUserClaim<string>> IdentityUserClaim { get; set; }
 
         public CZContext(DbContextOptions<CZContext> options) : base(options) { }
 
@@ -36,10 +43,10 @@ namespace Customzito.Services.CZDatabase
             {
                 entity.HasIndex((AspNetRole e) => e.NormalizedName, "RoleNameIndex").IsUnique().HasFilter("([NormalizedName] IS NOT NULL)");
             });
-            builder.Entity(delegate (EntityTypeBuilder<AspNetUser> entity)
+            builder.Entity(delegate (EntityTypeBuilder<AspNetUsers> entity)
             {
-                entity.HasIndex((AspNetUser e) => e.NormalizedUserName, "UserNameIndex").IsUnique().HasFilter("([NormalizedUserName] IS NOT NULL)");
-                entity.HasMany((AspNetUser d) => d.Roles).WithMany((AspNetRole p) => p.Users).UsingEntity("AspNetUserRole", (EntityTypeBuilder<Dictionary<string, object>> l) => l.HasOne<AspNetRole>().WithMany().HasForeignKey("RoleId"), (EntityTypeBuilder<Dictionary<string, object>> r) => r.HasOne<AspNetUser>().WithMany().HasForeignKey("UserId"), delegate (EntityTypeBuilder<Dictionary<string, object>> j)
+                entity.HasIndex((AspNetUsers e) => e.NormalizedUserName, "UserNameIndex").IsUnique().HasFilter("([NormalizedUserName] IS NOT NULL)");
+                entity.HasMany((AspNetUsers d) => d.Roles).WithMany((AspNetRole p) => p.Users).UsingEntity("AspNetUserRole", (EntityTypeBuilder<Dictionary<string, object>> l) => l.HasOne<AspNetRole>().WithMany().HasForeignKey("RoleId"), (EntityTypeBuilder<Dictionary<string, object>> r) => r.HasOne<AspNetUsers>().WithMany().HasForeignKey("UserId"), delegate (EntityTypeBuilder<Dictionary<string, object>> j)
                 {
                     j.HasKey("UserId", "RoleId");
                     j.ToTable("AspNetUserRoles");
@@ -54,6 +61,14 @@ namespace Customzito.Services.CZDatabase
             {
                 entity.HasKey((AspNetUserToken e) => new { e.UserId, e.LoginProvider, e.Name });
             });
+
+            //builder.Entity<IdentityUserClaim<Guid>>().HasKey(p => new { p.UserId, p.RoleId })
+            //
+            builder.Entity<TB_PedidoCustomizado>()
+            .HasOne(pc => pc.Material)
+            .WithMany()
+            .HasForeignKey(pc => pc.IdMaterial);
+
 
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.

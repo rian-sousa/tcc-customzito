@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Customzito.Areas.Identity.Data
 {
     // Add profile data for application users by adding properties to the CustomzitoUser class
-    public class CustomzitoUser : AspNetUser
+    public class CustomzitoUser : AspNetUsers
     {
     }
 }

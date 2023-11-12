@@ -17,9 +17,9 @@ namespace Customzito.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ResetPasswordModel : PageModel
     {
-        private readonly UserManager<AspNetUser> _userManager;
+        private readonly UserManager<AspNetUsers> _userManager;
 
-        public ResetPasswordModel(UserManager<AspNetUser> userManager)
+        public ResetPasswordModel(UserManager<AspNetUsers> userManager)
         {
             _userManager = userManager;
         }

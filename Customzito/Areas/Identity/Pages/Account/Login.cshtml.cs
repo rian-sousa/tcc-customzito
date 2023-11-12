@@ -1,5 +1,6 @@
 ﻿using CustomBancoLib;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -7,19 +8,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
+using System.Text.RegularExpressions;
 
 namespace Customzito.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<AspNetUser> _userManager;
-        private readonly SignInManager<AspNetUser> _signInManager;
+        private readonly UserManager<AspNetUsers> _userManager;
+        private readonly SignInManager<AspNetUsers> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<AspNetUser> signInManager,
+        public LoginModel(SignInManager<AspNetUsers> signInManager,
             ILogger<LoginModel> logger,
-            UserManager<AspNetUser> userManager)
+            UserManager<AspNetUsers> userManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -62,27 +65,47 @@ namespace Customzito.Areas.Identity.Pages.Account
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
             ReturnUrl = returnUrl;
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/Home/Index");
-
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            returnUrl ??= Url.Content("~/Interno/Index");
 
             if (ModelState.IsValid)
             {
+                var match = Regex.Match(Input.Email, @"^(.*)@.*$");
+
+                var username = match.Groups[1].Value;
+
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false); //Finalizar login
+                var result = await _signInManager.PasswordSignInAsync(username, Input.Password, Input.RememberMe, lockoutOnFailure: false); //Finalizar login
+                
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+
+                    Response.Cookies.Append("UsuarioLogado", username, new CookieOptions
+                    {
+                        Expires = DateTimeOffset.Now.AddMinutes(90) // Configure conforme necessário
+                    });
+
+
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.NameIdentifier, Input.Email),
+                        new Claim(ClaimTypes.Name, Input.Email),
+                        new Claim(ClaimTypes.Email, Input.Email),
+                    };
+                        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                        var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal, new AuthenticationProperties());
+
+                    return RedirectToAction("Index", "Interno");
                 }
                 if (result.RequiresTwoFactor)
                 {

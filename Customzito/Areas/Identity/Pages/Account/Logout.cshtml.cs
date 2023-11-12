@@ -15,10 +15,10 @@ namespace Customzito.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LogoutModel : PageModel
     {
-        private readonly SignInManager<AspNetUser> _signInManager;
+        private readonly SignInManager<AspNetUsers> _signInManager;
         private readonly ILogger<LogoutModel> _logger;
 
-        public LogoutModel(SignInManager<AspNetUser> signInManager, ILogger<LogoutModel> logger)
+        public LogoutModel(SignInManager<AspNetUsers> signInManager, ILogger<LogoutModel> logger)
         {
             _signInManager = signInManager;
             _logger = logger;

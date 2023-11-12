@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var UsuarioLogado = Context.Request.Cookies["UsuarioLogado"];
+
+}
+
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8" />
@@ -9,7 +17,7 @@
     <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />*@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet" />    
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet" />
 
     <!-- Customzito CSS -->
     <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
@@ -21,11 +29,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tulpen+One&display=swap" rel="stylesheet" />
     <link href="~/support/fonts/GochiHand-Regular.ttf" rel="stylesheet" />
 
-    <!-- Dropzone CSS -->
-    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
 
     <!--Material Icons Google -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <!-- Dropzone CSS -->
+    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -41,41 +50,29 @@
                         <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><img src="./images/logo-mobile.svg"></h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body align-items-center">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="@Url.Action("Index","Home")">Início</a>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 align-items-center">
+                            <li class="nav-item fs-3">
+                                <a class="nav-link active" aria-current="page" href="@Url.Action("Index","Interno")">Funções Internas</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index","Produtos")">Produtos</a>
+                            <li>
+                                <a class="nav-link" href="@Url.Action("ControleEstoque","Interno")">Controle de Estoque</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false" data-bs-toggle="dropdown">
-                                    Coleções
-                                </a>
+                            <li>
+                                <a class="nav-link">Pedidos Customizados</a>
+                            </li>
+                            <li class="dropdown">
+                                <a class="nav-link dropwdown-toggle" href="#" role="button" aria-expanded="false" data-bs-toggle="dropdown">Olá! @UsuarioLogado</a>
                                 <ul class="dropdown dropdown-menu dropdown-menu-dark">
                                     <li>
-                                        <a class="dropdown-item" href="@Url.Action("Index", "Collections")">Quebradas</a>
+                                        <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout">Sair da Conta</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="@Url.Action("Collections", "Classic")">Classic</a>
+                                        <a class="dropdown-item">Configurações</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li>
-                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Logar</a>
-
-                            </li>
-                            <li>
-                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Registrar</a>
-                            </li>
                         </ul>
-                        <div>
-                            <form class="d-flex input-group col-xs-2" role="search">
-                                <input class="form-control rounded-1" type="text" placeholder="Nome do Produto" aria-label="Recipient">
-                                <button class=" searchBtn btn btn-outline-secondary rounded-1" type="button" id="button-addon2">Buscar</button>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -89,7 +86,7 @@
     </main>
 
 
-    
+
 
     <!-- jQuery -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
