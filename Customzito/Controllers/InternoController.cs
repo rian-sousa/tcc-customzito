@@ -41,6 +41,8 @@ namespace Customzito.Controllers
 
                 ViewBag.lstProdutosColecao = lstRoupas;
 
+                return PartialView("_VisualizerRoupasPartial", lstRoupas);
+
             }
             
 
@@ -73,6 +75,12 @@ namespace Customzito.Controllers
 
         [Authorize]
         public async Task<IActionResult> Adicionar()
+        {
+            return default;
+        }
+
+        [Authorize]
+        public async Task<IActionResult> RemoverColecao()
         {
             return default;
         }

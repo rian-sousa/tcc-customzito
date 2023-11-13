@@ -4,8 +4,28 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    //var lstRoupa = TempData["RoupasPartial"] as List<CustomBancoLib.TB_Produto>;
 
-   
+    TempData["RoupasPartial"] = Model;
+
+    var lstRoupa = TempData["RoupasPartial"] as List<CustomBancoLib.TB_Produto>;
+
+
+    Console.WriteLine("===========PARTIAL VIEW CARREGADA ================");
+    Console.WriteLine("TEMPDATA - ROUPAS PARTIAL: " + TempData["RoupasPartial"]);
+    Console.WriteLine("VARIAVEL - Lst Roupa: " + lstRoupa);
+
+    if(Model is not null)
+    {
+        Console.WriteLine("DEBUG MODEL");
+        foreach (var item in Model)
+        {
+            Console.WriteLine("ID: {0}, TITULO: {1} ", item.IdColecao, item.Titulo);
+        }
+        Console.WriteLine("=============================================");
+    }
+    
+
 }
 
 <!-- Modal Roupas -->
@@ -122,9 +142,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (Model is not null)
+                                @if (lstRoupa is not null)
                                 {
-                                    @foreach (var item in Model)
+                                    @foreach (var item in lstRoupa)
                                     {
                                         <tr>
                                             <td scope="row">
@@ -144,7 +164,7 @@
                                 }
                                 else
                                 {
-
+                                    <div>NULLO</div>
                                 }
 
                             </tbody>

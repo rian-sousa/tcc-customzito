@@ -8,10 +8,23 @@
     var lstProdutos = ViewBag.lstProdutos;
     List<CustomBancoLib.TB_Produto> lstRoupa = ViewBag.lstProdutosColecao;
 
+    TempData["RoupasPartial"] = lstRoupa;
+
     var lstProdutosColecoes =  TempData["RoupasDaColecao"] as Dictionary<string, List<CustomBancoLib.TB_Produto>>;
 
     List<string> chaves = new List<string>(lstProdutosColecoes.Keys);
     List<CustomBancoLib.TB_Produto> Produtos = lstProdutosColecoes.Values.SelectMany(x => x).ToList();
+
+    Console.WriteLine("===================");
+    if(lstRoupa is not null)
+    {
+        foreach (var item in lstRoupa)
+        {
+            Console.WriteLine(item.IdProduto);
+        }
+    }
+    
+    
 }
 
 <div class="container">
@@ -50,7 +63,8 @@
                         title="Adicionar Coleção" data-bs-target="#AdicionarColecaoModal" )">
                 add
             </button>
-            <button class="btn btn-danger btn-sm mt-4 material-symbols-outlined" data-bs-toggle="modal" data-bs-placement="bottom" data-tt="tooltip" title="Remover Coleção">
+            <button class="btn btn-danger btn-sm mt-4 material-symbols-outlined" data-bs-toggle="modal" data-bs-placement="bottom" data-tt="tooltip"
+                    title="Remover Coleção" data-bs-target="#RemoverColecaoModal">
                 delete
             </button>
         </div>
@@ -151,6 +165,34 @@
         </div>
     </div>
 </div>
+
+
+<!-- Modal Remover Coleção-->
+<div class="modal fade" id="RemoverColecaoModal" tabindex="-1" aria-labelledby="RemoverColecaoModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="letter-spacing: 3px;"><b>REMOVER COLEÇÃO</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col text-center">
+                        Você realmente deseja remover essa coleção do catálogo?
+                    </div>
+                   
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-danger">Remover Coleção</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
