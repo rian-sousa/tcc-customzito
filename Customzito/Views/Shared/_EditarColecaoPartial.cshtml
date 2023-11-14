@@ -1,0 +1,38 @@
+﻿@model CustomBancoLib.TB_Colecao
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<!-- _EditarColecaoPartial.cshtml -->
+<div class="row">
+    <div class="col align-content-center">
+        <label for="DescricaoColecao" class="form-label">
+            Nome da Coleção
+        </label>
+    </div>
+    <div class="col align-content-center">
+        <input type="text" id="DescricaoColecao" class="form-control" placeholder="Ex: Hoodie Bc Raff" value="@Model.Descricao" />
+    </div>
+</div>
+<div class="row">
+    <div class="col align-content-center">
+        <label for="Limitado" class="form-label">
+            Limitado
+        </label>
+    </div>
+    <div class="col align-content-center">
+        @if(Model.Limitado is true)
+        {
+            <input type="checkbox" id="Limitado" class="form-check" checked />
+        }
+        else
+        {
+            <input type="checkbox" id="Limitado" class="form-check" />
+        }
+
+    </div>
+</div>

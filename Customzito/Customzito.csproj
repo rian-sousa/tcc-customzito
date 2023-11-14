@@ -42,7 +42,7 @@
   <ItemGroup>
     <None Include="Areas\Identity\Pages\Account\ForgotPassword.cshtml" />
     <Content Include="Areas\Identity\Pages\Account\Login.cshtml" />
-    <None Include="Areas\Identity\Pages\Account\Logout.cshtml" />
+    <Content Include="Areas\Identity\Pages\Account\Logout.cshtml" />
     <Content Include="Areas\Identity\Pages\Account\Register.cshtml" />
     <None Include="Areas\Identity\Pages\Account\ResetPassword.cshtml" />
     <Content Include="Areas\Identity\Pages\Account\_ViewImports.cshtml" />

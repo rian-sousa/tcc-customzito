@@ -16,7 +16,7 @@ namespace Customzito.Services.CZDatabase
         public DbSet<TB_Carrinho> TbCarrinho { get; set; }
         public DbSet<TD_TipoUsuario> TdTipoUsuario { get; set; }
         public DbSet<TD_TiposVestimenta> TdTipoVestimenta { get; set; }
-        public DbSet<TD_Material> Materiais { get; set; }
+        public DbSet<TD_Material> Material { get; set; }
         public DbSet<TD_Frete> Fretes { get; set; }
         public DbSet<TD_FaixasPrecos> FaixasPrecos { get; set; }
         public DbSet<TB_ArquivosCustomBase> ArquivosCustomBase { get; set; }

@@ -35,39 +35,26 @@
     </div>
 </div>
 
-<div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-
-    @foreach (var item in ViewBag.Colecoes)
-    {
-        @if(item.IdColecao % 2 == 1)
+<div class="container w-50 my-md-3 ps-md-3 text-center">
+    <div class="row align-items-center">
+        @foreach (var item in ViewBag.Colecoes)
         {
-            <div class="bg-dark me-md-3 pt-3 pt-md-5 px-md-5 text-center text-white overflow-hidden rounded-1">
-                <div class="my-3 py-3">
-                    <h2 class="display-5 colecoes-text colecoes-text-card ">@item.Descricao</h2>
-                    @if(item.Limitado == true)
-                    {
-                        <p class="lead text-warning colecoes-text-limitado">EDIÇÃO LIMITADA!</p>
-                    }
-                    
-                </div>
-            </div>            
-        }
+            <div class="bg-dark me-md-3 pt-3  text-center text-white overflow-hidden rounded-1 mb-5 ">
+                <a href="/Produtos/Colecoes/@item.IdColecao" style="text-decoration: none; color:white">
+                    <div class="my-3 py-3">
+                        <h2 class="display-5 colecoes-text-card ">@item.Descricao</h2>
+                        @if (item.Limitado == true)
+                        {
+                            <p class="lead text-warning colecoes-text-limitado">EDIÇÃO LIMITADA!</p>
+                        }
 
-        @if(item.IdColecao % 2 == 0)
-        {
-            <div class="bg-light me-md-3 pt-3 pt-md-5 px-md-5 text-center overflow-hidden rounded-1 border border-secondary">
-                <div class="my-3 py-3">
-                    <h2 class="display-5 colecoes-text colecoes-text-card">@item.Descricao</h2>
-                    @if (item.Limitado == true)
-                    {
-                        <p class="lead text-warning colecoes-text-limitado">EDIÇÃO LIMITADA!</p>
-                    }
-
-                </div>
+                    </div>
+                </a>
             </div>
         }
-        
-    }
+    </div>
+
     
+
 </div>
 

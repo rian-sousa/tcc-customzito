@@ -25,3 +25,21 @@ function RecuperarRoupasColecao(idColecao) {
     });
     
 }
+
+function AbrirModalEditarColecao(idColecao) {
+    // Lógica para carregar os detalhes da coleção e preencher a partial view
+    // Use AJAX para buscar os dados do servidor e preencher a partial view
+    // Exemplo: $.get('/Colecao/Editar/' + idColecao, function(data) { $('#EditarColecaoPartial').html(data); });
+    $.ajax({
+        url: `EditarColecao/` + idColecao,
+        type: 'GET',
+        success: function (data) {
+            $('#EditarColecaoPartial').html(data);
+        }
+    })
+}
+
+function MascaraValor(input) {
+
+    $('#preco').inputmask('R$ 999,99 ', { placeholder: 'R$ ___,__' });
+}

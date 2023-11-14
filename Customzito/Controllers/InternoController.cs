@@ -2,6 +2,7 @@
 using Customzito.Services.CZDatabase;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Customzito.Controllers
@@ -31,7 +32,17 @@ namespace Customzito.Controllers
             var Produtos = await _czContext.TbProduto
                 .ToListAsync();
 
-            if(idColecao is not null)
+            var Materiais = await _czContext.Material
+                .ToListAsync();
+
+            var Tipos = await _czContext.TdTipoVestimenta
+                .ToListAsync();
+
+            ViewBag.MaterialDrop = new SelectList(Materiais, "IdMaterial", "Descricao");
+
+            ViewBag.TipoDrop = new SelectList(Tipos, "IdTipoVestimenta", "Descricao");
+
+            if (idColecao is not null)
             {
                 var lstRoupas = await RecuperarRoupasColecao(idColecao);
 
@@ -83,6 +94,15 @@ namespace Customzito.Controllers
         public async Task<IActionResult> RemoverColecao()
         {
             return default;
+        }
+
+        [Authorize]
+        public async Task<IActionResult> EditarColecao(int id)
+        {
+            var Colecao = await _czContext.TbColecao
+                .FirstOrDefaultAsync(x => x.IdColecao == id);
+
+            return PartialView("_EditarColecaoPartial", Colecao);
         }
 
 
