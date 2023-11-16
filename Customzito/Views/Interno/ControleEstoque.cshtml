@@ -27,7 +27,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col" >
+        <div class="col-md-6" >
             <div class="body table-responsive border rounded mt-5" style="max-height: 300px; overflow-y: auto;">
                 <table class="table table-hover table-stripped">
                     <thead class="table-dark">
@@ -44,13 +44,15 @@
                                 <td scope="row">
                                     @colecao.Descricao
                                 </td>
-                                <td>
-                                    <button class="btn btn-primary material-symbols-outlined" id="btn-ver-roupas" data-tt="tooltip" data-bs-toggle="modal" data-bs-placement="bottom"
-                                            title="Editar Coleção" data-bs-target="#EditarColecaoModal" onclick="AbrirModalEditarColecao(@colecao.IdColecao);">
+                                <td class="d-flex justify-content-evenly">
+                                    <button class="btn btn-primary btn-sm material-symbols-outlined" id="btn-ver-roupas" data-tt="tooltip" data-bs-toggle="modal" data-bs-placement="bottom"
+                                    title="Editar Coleção" data-bs-target="#EditarColecaoModal" onclick="AbrirModalEditarColecao(@colecao.IdColecao);">
                                         edit
                                     </button>
-
-
+                                    <button class="btn btn-danger btn-sm material-symbols-outlined" data-bs-toggle="modal" data-bs-placement="bottom" data-tt="tooltip" id="btn-remover-colecao"
+                                            title="Remover Coleção" data-bs-target="#RemoverColecaoModal"onclick="AbrirModalColecaoRemover('RestaurarModalRemoverColecao', @colecao.IdColecao);">
+                                        delete
+                                    </button>
                                 </td>
                             </tr>
                         }
@@ -58,16 +60,13 @@
                 </table>                
             </div>
             <button class="btn btn-success btn-sm mt-4 material-symbols-outlined" data-bs-toggle="modal" data-bs-placement="bottom" data-tt="tooltip"
-            title="Adicionar Coleção" data-bs-target="#AdicionarColecaoModal" )">
+                    title="Adicionar Coleção" data-bs-target="#AdicionarColecaoModal" onclick="RestaurarModalColecaoAdd('RestaurarModalAddColecao');">
                 add
             </button>
-            <button class="btn btn-danger btn-sm mt-4 material-symbols-outlined" data-bs-toggle="modal" data-bs-placement="bottom" data-tt="tooltip"
-            title="Remover Coleção" data-bs-target="#RemoverColecaoModal">
-                delete
-            </button>
+            
         </div>
-        <div class="col">
-            <div class="body table-responsive border rounded mt-5" style="max-height: 300px;overflow-y: auto;">
+        <div class="col-md-6">
+            <div class="body table-responsive border rounded mt-5 " style="max-height: 300px;overflow-y: auto;">
                 <table class="table table-hover table-stripped" >
                     <thead class="table-dark">
                         <tr>
@@ -80,8 +79,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
-
+                    <tbody >
                         @foreach (var produto in lstProdutos)
                         {
                             <tr>
@@ -94,9 +92,15 @@
                                 <td>
                                     @produto.Avaliacao
                                 </td>
-                                <td>
-                                    <button class="btn btn-primary material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar Produto">
+                                <td class="d-flex justify-content-evenly">
+                                    <button class="btn btn-primary btn-sm  material-symbols-outlined" data-bs-toggle="modal" data-bs-placement="bottom" data-tt="tooltip"
+                                            title="Editar Produto" data-bs-target="#EditarRoupaModal" onclick="AbrirModalEditarRoupa(@produto.IdProduto);">
                                         edit
+                                    </button>
+
+                                    <button class="btn btn-danger btn-sm material-symbols-outlined" data-bs-toggle="modal" data-bs-placement="bottom" data-tt="tooltip"
+                                            title="Remover Roupa" data-bs-target="#RemoverRoupaModal" onclick="AbrirModalRoupaRemover('RestaurarModalRemoverRoupa', @produto.IdProduto);">
+                                        delete
                                     </button>
                                 </td>
                             </tr>
@@ -105,13 +109,10 @@
                 </table>
             </div>
             <button class="btn btn-success btn-sm mt-4 material-symbols-outlined" data-bs-toggle="modal" data-bs-placement="bottom" data-tt="tooltip"
-                    title="Adicionar Roupa" data-bs-target="#AdicionarRoupaModal">
+                    title="Adicionar Roupa" data-bs-target="#AdicionarRoupaModal" onclick="RestaurarModalRoupaAdd('RestaurarModalAddRoupa');">
                 add
             </button>
-            <button class="btn btn-danger btn-sm mt-4 material-symbols-outlined" data-bs-toggle="modal" data-bs-placement="bottom" data-tt="tooltip"
-                    title="Remover Roupa" data-bs-target="#RemoverRoupaModal">
-                delete
-            </button>
+            
         </div>
         <div class="col">
             <div class="card mt-5">
@@ -128,224 +129,45 @@
 
 <!-- Modal Adicionar Coleção-->
 <div class="modal fade" id="AdicionarColecaoModal" tabindex="-1" aria-labelledby="AdicionarColecaoModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" style="letter-spacing: 3px;"><b>ADICIONAR COLEÇÃO</b></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col align-content-center">
-                        <label for="DescricaoColecao" class="form-label">
-                            Nome da Coleção
-                        </label>
-                    </div>
-                    <div class="col align-content-center">
-                        <input type="text" id="DescricaoColecao" class="form-control" placeholder="Ex: Hoodie Bc Raff" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col align-content-center">
-                        <label for="Limitado" class="form-label">
-                            Limitado
-                        </label>
-                    </div>
-                    <div class="col align-content-center">
-                        <input type="checkbox" id="Limitado" class="form-check" />
-                    </div>
-                </div>
-                
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Salvar Coleção</button>
-            </div>
-        </div>
+    <div class="modal-dialog" id="AdicionarColecaoModalBody">
+        
     </div>
 </div>
 
 <!-- Modal Editar Coleção-->
 <div class="modal fade" id="EditarColecaoModal" tabindex="-1" aria-labelledby="EditarColecaoModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" style="letter-spacing: 3px;"><b>Editar COLEÇÃO</b></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="EditarColecaoPartial">
-                <!-- Aqui será carregada a partial view de edição -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Salvar Coleção</button>
-            </div>
-        </div>
+    <div class="modal-dialog" id="EditarColecaoPartial">
+        
     </div>
 </div>
 
 
 <!-- Modal Remover Coleção-->
 <div class="modal fade" id="RemoverColecaoModal" tabindex="-1" aria-labelledby="RemoverColecaoModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" style="letter-spacing: 3px;"><b>REMOVER COLEÇÃO</b></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col text-center">
-                        Você realmente deseja remover essa coleção do catálogo?
-                    </div>
-                   
-                </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-danger">Remover Coleção</button>
-            </div>
-        </div>
+    <div class="modal-dialog" id="RemoverColecaoModalBody">
+       
     </div>
 </div>
 
 <!-- Modal Adicionar Roupa-->
 <div class="modal fade" id="AdicionarRoupaModal" tabindex="-1" aria-labelledby="AdicionarRoupaModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" style="letter-spacing: 3px;"><b>ADICIONAR ROUPA</b></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col align-content-center">
-                        <label for="DescricaoRoupa" class="form-label">
-                            Descrição
-                        </label>
-                    </div>
-                    <div class="col align-content-center">
-                        <input type="text" id="DescricaoRoupa" class="form-control" placeholder="Ex: A lendaria broca tag" />
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col align-content-center">
-                        <label for="Titulo" class="form-label">
-                            Titulo
-                        </label>
-                    </div>
-                    <div class="col align-content-center">
-                        <input type="text" id="Titulo" class="form-control" placeholder="Ex: Broca Tag" />
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col align-content-center">
-                        <label for="Prco" class="form-label">
-                            Preço
-                        </label>
-                    </div>
-                    <div class="col align-content-center">
-                        <input type="text" id="preco" class="form-control" oninput="MascaraValor(this)" placeholder="Ex: R$ 500,00"/>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col align-content-center">
-                        <label for="TipoVestimenta" class="form-label">
-                            Tipo de Vestimenta
-                        </label>
-                    </div>
-                    <div class="col align-content-center">
-                        @Html.DropDownList("IdTipoVestimenta", ViewBag.TipoDrop, "Escolher o Tipo de Vestimenta", new{ @class="form-select"})
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col align-content-center">
-                        <label for="Quantidade" class="form-label">
-                            Quantidade
-                        </label>
-                    </div>
-                    <div class="col align-content-center">
-                        <input type="number" value="0" min="0" step="1" class="form-control" placeholder="Ex: 1421" />
-                    </div>
-                </div>
-                @*<div class="row mt-2">
-                    <div class="col align-content-center">
-                        <label for="Cores" class="form-label">
-                            Cores
-                        </label>
-                    </div>
-                    <div class="col align-content-center">
-                        <input type="text" id="Cores" class="form-control" />
-                    </div>
-                </div>*@
-                <div class="row mt-2">
-                    <div class="col align-content-center">
-                        <label for="Materiais" class="form-label">
-                            Materiais
-                        </label>
-                    </div>
-                    <div class="col align-content-center">
-                        @Html.DropDownList("IdMaterial", ViewBag.MaterialDrop, "Escolher o Material", new{ @class="form-select"})
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col align-content-center">
-                        <label for="Marca" class="form-label">
-                            Marca
-                        </label>
-                    </div>
-                    <div class="col align-content-center">
-                        <input type="text" id="Marca" class="form-control" placeholder="Ex: FERNDVM CLOTHING"/>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col align-content-center">
-                        <label for="Imagem" class="form-label">
-                            Imagem
-                        </label>
-                    </div>
-                    <div class="col align-content-center">
-                        <input type="file" id="Imagem" class="form-control" />
-                    </div>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Salvar Coleção</button>
-            </div>
-        </div>
+    <div class="modal-dialog" id="AdicionarRoupaModalBody">
+        
     </div>
 </div>
 
 <!-- Modal Remover Roupa-->
 <div class="modal fade" id="RemoverRoupaModal" tabindex="-1" aria-labelledby="RemoverRoupaModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" style="letter-spacing: 3px;"><b>REMOVER COLEÇÃO</b></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col text-center">
-                        Você realmente deseja remover essa coleção do catálogo?
-                    </div>
-
-                </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-danger">Remover Coleção</button>
-            </div>
-        </div>
+    <div class="modal-dialog" id="RemoverRoupaModalBody">
+        
     </div>
 </div>
 
+<!-- Modal Editar Coleção-->
+<div class="modal fade" id="EditarRoupaModal" tabindex="-1" aria-labelledby="EditarColecaoModal" aria-hidden="true">
+    <div class="modal-dialog" id="EditarRoupaPartial">
+    </div>
+</div>
 
 <div id="PartialRoupas">
     @await Html.PartialAsync("_VisualizerRoupasPartial", lstRoupa);

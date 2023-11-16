@@ -1,53 +1,39 @@
-﻿@model CustomBancoLib.TB_Colecao
-
-@*
+﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 
-
-<!-- _EditarColecaoPartial.cshtml -->
-
 <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="letter-spacing: 3px;"><b>Editar COLEÇÃO</b></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="letter-spacing: 3px;"><b>ADICIONAR COLEÇÃO</b></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        <input type="text" id="InputIdColecao" value="@Model.IdColecao" hidden />
         <div class="row">
             <div class="col align-content-center">
-                <label for="NovaDescricao" class="form-label">
+                <label for="DescricaoColecao" class="form-label">
                     Nome da Coleção
                 </label>
             </div>
             <div class="col align-content-center">
-                <input type="text" id="NovaDescricao" class="form-control" placeholder="Ex: Hoodie Bc Raff" value="@Model.Descricao" />
+                <input type="text" id="DescricaoColecao" name="DescricaoColecao" class="form-control" placeholder="Ex: Hoodie Bc Raff" />
             </div>
         </div>
         <div class="row">
             <div class="col align-content-center">
-                <label for="Limitado" class="form-label">
+                <label for="checkLimitado" class="form-label">
                     Limitado
                 </label>
             </div>
             <div class="col align-content-center">
-                @if (Model.Limitado is true)
-                {
-                    <input type="checkbox" id="Limitado" class="form-check" checked />
-                }
-                else
-                {
-                    <input type="checkbox" id="Limitado" class="form-check" />
-                }
-
+                <input type="checkbox" id="checkLimitado" name="checkLimitado" value="Limitado" class="form-check" />
             </div>
         </div>
 
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary" onclick="EditarColecao();">Salvar Coleção</button>
+        <button type="button" class="btn btn-primary" onclick="AdicionarColecao();">Salvar Coleção</button>
     </div>
 </div>

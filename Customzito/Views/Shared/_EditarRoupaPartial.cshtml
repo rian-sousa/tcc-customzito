@@ -1,0 +1,126 @@
+﻿@model CustomBancoLib.TB_Produto
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="letter-spacing: 3px;"><b>EDITAR INFORMAÇÕES DA ROUPA</b></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form id="formAdicionarRoupa" action="AdicionarRoupa" enctype="multipart/form-data" method="post">
+            <div class="row">
+                <div class="col align-content-center">
+                    <label for="DescricaoRoupa" class="form-label">
+                        Descrição
+                    </label>
+                </div>
+                <div class="col align-content-center">
+                    <input type="text" id="DescricaoRoupa" class="form-control" value="@Model.Descricao" placeholder="Ex: A lendaria broca tag" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col align-content-center">
+                    <label for="Titulo" class="form-label">
+                        Titulo
+                    </label>
+                </div>
+                <div class="col align-content-center">
+                    <input type="text" id="Titulo" class="form-control" placeholder="Ex: Broca Tag" value="@Model.Titulo" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col align-content-center">
+                    <label for="Prco" class="form-label">
+                        Preço
+                    </label>
+                </div>
+                <div class="col align-content-center">
+                    <input type="text" id="preco" class="form-control" oninput="MascaraValor(this)" value="@Model.Preco" placeholder="Ex: R$ 500,00" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col align-content-center">
+                    <label for="TipoVestimenta" class="form-label">
+                        Tipo de Vestimenta
+                    </label>
+                </div>
+                <div class="col align-content-center">
+                    @Html.DropDownList("IdTipoVestimenta", ViewBag.TipoDrop, $"${Model.IdTipoVestimenta}", new{ @class="form-select", @id="IdTipoVestimenta"})
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col align-content-center">
+                    <label for="Quantidade" class="form-label">
+                        Quantidade
+                    </label>
+                </div>
+                <div class="col align-content-center">
+                    <input type="number" id="qtd" value="0" min="0" step="1" class="form-control" value="@Model.qtd" placeholder="Ex: 1421" />
+                </div>
+            </div>
+            @*<div class="row mt-2">
+            <div class="col align-content-center">
+            <label for="Cores" class="form-label">
+            Cores
+            </label>
+            </div>
+            <div class="col align-content-center">
+            <input type="text" id="Cores" class="form-control" />
+            </div>
+            </div>*@
+            <div class="row mt-2">
+                <div class="col align-content-center">
+                    <label for="Materiais" class="form-label">
+                        Materiais
+                    </label>
+                </div>
+                <div class="col align-content-center">
+                    @Html.DropDownList("IdMaterial", ViewBag.MaterialDrop , $"{Model.Material}", new{ @class="form-select", @id="IdMaterial"})
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col align-content-center">
+                    <label for="Marca" class="form-label">
+                        Coleção
+                    </label>
+                </div>
+                <div class="col align-content-center">
+                    @Html.DropDownList("IdColecao", ViewBag.ColecoesDrop, $"{Model.IdColecao}", new { @class="form-select", @id="IdColecao"})
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col align-content-center">
+                    <label for="Marca" class="form-label">
+                        Marca
+                    </label>
+                </div>
+                <div class="col align-content-center">
+                    <input type="text" id="Marca" class="form-control" placeholder="Ex: FERNDVM CLOTHING" value="@Model.Marca" />
+                    <input type="number" id="idProduto" value="@Model.IdProduto" hidden />
+                </div>
+            </div>
+            @*<div class="row mt-2">
+                <div class="col align-content-center">
+                    <label for="Imagem" class="form-label">
+                        Imagem
+                    </label>
+                </div>
+                <div class="col align-content-center">
+                    <input type="file" id="imagem" class="form-control" />
+                </div>
+            </div>*@
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" onclick="EditarRoupa();">Salvar Alterações</button>
+    </div>
+</div>
