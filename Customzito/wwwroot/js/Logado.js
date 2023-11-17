@@ -198,3 +198,28 @@ function AdicionarRoupa() {
         }
     })
 }
+
+function EditarRoupa() {
+    let DescricaoRoupa = $('#DescricaoRoupa').val();
+    let Titulo = $('#Titulo').val();
+    let preco = $('#preco').val();
+    let IdTipoVestimenta = $('#IdTipoVestimenta').val();
+    let qtd = $('#qtd').val();
+    let IdMaterial = $('#IdMaterial').val();
+    let IdColecao = $('#IdColecao').val();
+    let Marca = $('#Marca').val();
+    let imagem = $('#imagem').val();
+    let idProduto = $('#idProduto').val();
+
+    $.ajax({
+        url: `EditarRoupa/` + '?idProduto' + idProduto + '&DescricaoRoupa=' + DescricaoRoupa + '&Titulo=' + Titulo
+            + '&preco=' + preco + '&IdTipoVestimenta=' + IdTipoVestimenta + '&qtd=' + qtd
+            + '&IdMaterial=' + IdMaterial + '&IdColecao=' + IdColecao + '&Marca=' + Marca
+            + '&imagem=' + imagem ,
+        type: 'POST',
+        success: function (data) {
+            $('#EditarRoupaPartial').empty()
+            $('#EditarRoupaPartial').html(data);
+        }
+    })
+}

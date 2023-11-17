@@ -224,7 +224,7 @@ namespace Customzito.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> EditarRoupa(int idProduto,string DescricaoRoupa, string Titulo, float preco, int IdTipoVestimenta, int IdColecao, decimal? avaliacao, int qtd, string? cor, string IdMaterial, string Marca)
+        public async Task<IActionResult> EditarRoupa(int idProduto,string DescricaoRoupa, string Titulo, float preco, int IdTipoVestimenta, int IdColecao, decimal? avaliacao, int qtd, string? cor, string? IdMaterial, string Marca)
         {
             var ObjProduto = await _czContext.TbProduto
                 .FirstOrDefaultAsync(x => x.IdProduto == idProduto);

@@ -14,7 +14,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        <form id="formAdicionarRoupa" action="AdicionarRoupa" enctype="multipart/form-data" method="post">
+        <form id="formEditarRoupa" action="EditarRoupa" enctype="multipart/form-data" method="post">
             <div class="row">
                 <div class="col align-content-center">
                     <label for="DescricaoRoupa" class="form-label">
@@ -52,7 +52,7 @@
                     </label>
                 </div>
                 <div class="col align-content-center">
-                    @Html.DropDownList("IdTipoVestimenta", ViewBag.TipoDrop, $"${Model.IdTipoVestimenta}", new{ @class="form-select", @id="IdTipoVestimenta"})
+                    @Html.DropDownList("IdTipoVestimenta", ViewBag.TipoDrop, $"{Model.IdTipoVestimenta}", new{ @class="form-select", @id="IdTipoVestimenta"})
                 </div>
             </div>
             <div class="row mt-2">
