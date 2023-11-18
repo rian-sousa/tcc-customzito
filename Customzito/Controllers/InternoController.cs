@@ -1,4 +1,5 @@
 ﻿using CustomBancoLib;
+using Customzito.Models.Auxiliares;
 using Customzito.Services.CZDatabase;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Customzito.Controllers
 {
+    [Authorize]
     public class InternoController : Controller
     {
         private CZContext _czContext;
+
         public InternoController(CZContext contexto)
         {
             _czContext = contexto;
@@ -21,7 +24,56 @@ namespace Customzito.Controllers
             return View();
         }
 
-        [Authorize]
+        public async Task<IActionResult> PedidosCustomizados()
+        {
+            var PedidosCompletos = await RecuperarPedidosCompletos();
+
+            return View();
+        }
+
+        private async Task<List<PedidoCompletoModel>> RecuperarPedidosCompletos()
+        {
+            List<PedidoCompletoModel> lstPedidosCompletos = new();
+
+            var Produtos = await _czContext.TbProduto
+                .ToListAsync();
+
+            var Carrinhos = await _czContext.TbCarrinho
+                .ToListAsync();
+
+            var Usuarios = await _czContext.AspNetUser
+                .ToListAsync();
+
+            var Stats = await _czContext.Status
+                .ToListAsync();
+
+            var Perfis = await _czContext.TbPerfil
+                .ToListAsync();
+
+            var JoinPedidoCompleto = from Carrinho in Carrinhos
+                                     join Usuario in Usuarios on Carrinho.IdPerfil equals Usuario.IdPerfil
+                                     join Perfil in Perfis on Carrinho.IdPerfil equals Perfil.IdPerfil
+                                     join Produto in Produtos on Carrinho.IdProduto equals Produto.IdProduto
+                                     join STS in Stats on Produto.IdProduto equals STS.IdStatus
+                                     select new PedidoCompletoModel
+                                     {
+                                         Protocolo = Carrinho.Protocolo,
+                                         ValorTotal = Carrinho.ValorTotal,
+                                         Email = Usuario.Email,
+                                         TipoPedido = (Produto.IdPedidoCustomizado != null) ? "CUSTOMIZADO" : "FÁBRICA",
+                                         Status = STS.DescricaoInterna,
+                                         IdCarrinho = Carrinho.IdCarrinho,
+                                         IdPerfil = Perfil.IdPerfil
+                                     };
+
+            foreach (var PedidoConsultado in JoinPedidoCompleto)
+            {
+                lstPedidosCompletos.Add(PedidoConsultado);
+            }
+
+            return lstPedidosCompletos;
+        }
+
         public async Task<IActionResult> ControleEstoque(int? idColecao)
         {
             Dictionary<string, List<TB_Produto>> DictRoupasEstoques = new Dictionary<string, List<TB_Produto>>();
@@ -67,7 +119,6 @@ namespace Customzito.Controllers
             return View();
         }
 
-        [Authorize]
         public async Task<List<TB_Produto>> RecuperarRoupasColecao(int? idColecao)
         {
             if (idColecao is not null)
@@ -86,7 +137,6 @@ namespace Customzito.Controllers
             return default;
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AdicionarColecao(string DescricaoColecao, bool checkLimitado)
         {
@@ -110,7 +160,6 @@ namespace Customzito.Controllers
 
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> RemoverColecao(int id)
         {
@@ -131,7 +180,6 @@ namespace Customzito.Controllers
             return PartialView("_OperacaoFalhaPartial");
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> EditarColecao(int id, string descricao, bool limitado)
         {
@@ -148,7 +196,6 @@ namespace Customzito.Controllers
             return PartialView("_OperacaoConfirmadaPartial");
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AdicionarRoupa(string DescricaoRoupa, string Titulo, float preco, int IdTipoVestimenta, int IdColecao, decimal? avaliacao, int qtd, string? cor, string IdMaterial, string Marca, IFormFile? imagem)
         {
@@ -207,7 +254,6 @@ namespace Customzito.Controllers
             }
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> RemoverRoupa(int id)
         {
@@ -222,7 +268,6 @@ namespace Customzito.Controllers
             return PartialView("_OperacaoConfirmadaPartial");
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> EditarRoupa(int idProduto,string DescricaoRoupa, string Titulo, float preco, int IdTipoVestimenta, int IdColecao, decimal? avaliacao, int qtd, string? cor, string? IdMaterial, string Marca)
         {
@@ -247,7 +292,6 @@ namespace Customzito.Controllers
             return PartialView("_OperacaoConfirmadaPartial");
         }
 
-        [Authorize]
         public async Task<IActionResult> RestaurarModalEditarColecao(int id)
         {
             var Colecao = await _czContext.TbColecao
@@ -256,20 +300,16 @@ namespace Customzito.Controllers
             return PartialView("_EditarColecaoPartial", Colecao);
         }
 
-
-        [Authorize]
         public IActionResult RestaurarModalAddColecao()
         {
             return PartialView("_ModalAdicionarColecaoPartial");
         }
 
-        [Authorize]
         public IActionResult RestaurarModalRemoverColecao(string idColecao)
         {
             return PartialView("_ModalRemoverColecaoPartial", idColecao);
         }
 
-        [Authorize]
         public async Task<IActionResult> RestaurarModalAddRoupa()
         {
             var Colecoes = await _czContext.TbColecao
@@ -290,13 +330,11 @@ namespace Customzito.Controllers
             return PartialView("_ModalAdicionarRoupaPartial");
         }
 
-        [Authorize]
         public IActionResult RestaurarModalRemoverRoupa(string idRoupa)
         {
             return PartialView("_ModalRemoverRoupaPartial", idRoupa);
         }
 
-        [Authorize]
         public async Task<IActionResult> RestaurarModalEditarRoupa(int id)
         {
             var Colecoes = await _czContext.TbColecao

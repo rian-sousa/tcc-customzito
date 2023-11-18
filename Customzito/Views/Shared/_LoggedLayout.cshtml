@@ -29,12 +29,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tulpen+One&display=swap" rel="stylesheet" />
     <link href="~/support/fonts/GochiHand-Regular.ttf" rel="stylesheet" />
 
-
     <!--Material Icons Google -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
     <!-- Dropzone CSS -->
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
+
+    <!--Datables CSS-->
+    <link href="/plugins/datatables/datatables.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -59,7 +61,7 @@
                                 <a class="nav-link" href="@Url.Action("ControleEstoque","Interno")">Controle de Estoque</a>
                             </li>
                             <li>
-                                <a class="nav-link">Pedidos Customizados</a>
+                                <a class="nav-link" href="@Url.Action("PedidosCustomizados","Interno")">Pedidos Customizados</a>
                             </li>
                             <li class="dropdown">
                                 <a class="nav-link dropwdown-toggle" href="#" role="button" aria-expanded="false" data-bs-toggle="dropdown">Olá! @UsuarioLogado</a>
@@ -102,6 +104,9 @@
 
     <!--Input Mask-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js" ></script>
+
+    <!--Datatables JS-->
+    <script src="~/plugins/datatables/datatables.min.js"></script>
 
 
     @await RenderSectionAsync("Scripts", required: false)
