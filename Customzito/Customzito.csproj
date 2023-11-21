@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <!--<ItemGroup>
+  <ItemGroup>
     <Compile Remove="Areas\**" />
     <Compile Remove="Support\**" />
     <Compile Remove="wwwroot\support\NewFolder\**" />
@@ -19,7 +19,7 @@
     <None Remove="Areas\**" />
     <None Remove="Support\**" />
     <None Remove="wwwroot\support\NewFolder\**" />
-  </ItemGroup>-->
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Include="Areas\Identity\Data\CustomzitoContext.cs" />
