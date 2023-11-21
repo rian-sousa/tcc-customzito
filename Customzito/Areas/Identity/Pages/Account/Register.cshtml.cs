@@ -16,28 +16,34 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using CustomBancoLib;
 using System.Text.RegularExpressions;
+using Customzito.Services.CZDatabase;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Customzito.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<AspNetUsers> _signInManager;
-        private UserManager<AspNetUsers> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
-        private readonly IEmailSender _emailSender;
+        //private readonly IEmailSender _emailSender;
+        private CZContext _czContext;
 
         public RegisterModel(
-            UserManager<AspNetUsers> userManager,
-            SignInManager<AspNetUsers> signInManager,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            //IEmailSender emailSender,
+            CZContext context
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            _emailSender = emailSender;
-
+            //_emailSender = emailSender;
+            _czContext = context;
         }
 
         [BindProperty]
@@ -74,18 +80,25 @@ namespace Customzito.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            var Roles = await _czContext.IdentityRole.ToListAsync();
+                //.FirstOrDefaultAsync(x => x.Id == "7E43994F-FDE6-4061-AA98-B76B17E64079");
+
+            //List<IdentityRole> Roles = new List<IdentityRole> { RoleCliente };
+
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
                 var match = Regex.Match(Input.Email, @"^(.*)@.*$");
-
                 var username = match.Groups[1].Value;
 
                 username = Regex.Replace(username, @"[^a-zA-Z0-9]", "");
 
-                var user = new AspNetUsers { UserName = username, Email = Input.Email };
-                
+                var user = new IdentityUser { UserName = username, Email = Input.Email  };
+
+
+                await _userManager.AddToRoleAsync(user, "Cliente");
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
@@ -100,8 +113,8 @@ namespace Customzito.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Customzito.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly CZContext _czContext;
@@ -14,9 +15,14 @@ namespace Customzito.Controllers
             _czContext = context;
         }
 
-        [AllowAnonymous]
+        
         public async Task<ActionResult> Index()
         {
+            var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
+            string layout = userRole == "Cliente" ? "~/Views/Shared/_LayoutCliente.cshtml" : "~/Views/Shared/_Layout.cshtml";
+
+            ViewData["Layout"] = layout;
+
             return View();
         }
 

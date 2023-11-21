@@ -22,6 +22,7 @@ builder.Services.AddScoped<UserManager<AspNetUsers>>();
 //builder.Services.AddScoped<UserManager<CustomzitoUser>>();
 
 builder.Services.AddDefaultIdentity<AspNetUsers>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<CZContext>()
     .AddDefaultTokenProviders();
 
@@ -54,12 +55,13 @@ builder.Services.Configure<IdentityOptions>(options =>
 builder.Services.ConfigureApplicationCookie(options =>
 {
     // Cookie settings
-    options.Cookie.HttpOnly = true;
+    //options.Cookie.HttpOnly = true;
     options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
     options.LoginPath = "/Identity/Account/Login";
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.SlidingExpiration = true;
+
 });
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -76,6 +78,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddAuthorization(options =>
 {
+    options.AddPolicy("FuncaoAdm",
+        policy => policy.RequireRole("Administrador"));
+
+    options.AddPolicy("Cliente",
+        policy => policy.RequireRole("Cliente"));
+
     options.FallbackPolicy = new AuthorizationPolicyBuilder()
         .RequireAuthenticatedUser()
         .Build();
@@ -84,7 +92,7 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(90);
-    options.Cookie.HttpOnly = true;
+    options.Cookie.HttpOnly = false;
     options.Cookie.IsEssential = true;
 });
 
@@ -104,12 +112,15 @@ app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
     {
-        // Adicione a autorização aqui se necessário
         ctx.Context.Response.Headers.Add("Cache-Control", "no-store");
         ctx.Context.Response.Headers.Add("Pragma", "no-cache");
         ctx.Context.Response.Headers.Add("Expires", "-1");
     }
 });
+
+
+
+app.UseSession();
 
 app.UseRouting();
 
@@ -124,4 +135,19 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
+    using (var scope = app.Services.CreateScope())
+    {
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+        var roles = new[] { "Admin", "Cliente" };
+
+        foreach(var role in roles)
+        {
+            if(!await roleManager.RoleExistsAsync(role))
+            {
+                await roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
+    }
+
+    app.Run();

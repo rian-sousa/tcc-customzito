@@ -20,6 +20,12 @@ namespace Customzito.Controllers
             var Colecoes = await _czContext.TbColecao
                 .ToListAsync();
 
+            var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
+            string layout = userRole == "Cliente" ? "~/Views/Shared/_LayoutCliente.cshtml" : "~/Views/Shared/_Layout.cshtml";
+
+            ViewData["Layout"] = layout;
+
+
             ViewBag.Colecoes = Colecoes;
 
             return View();

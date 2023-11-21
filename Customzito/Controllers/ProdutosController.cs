@@ -21,7 +21,13 @@ namespace Customzito.Controllers
             var Produtos = await _czContext.TbProduto
                 .ToListAsync();
 
-            ViewBag.Produtos = Produtos;    
+            ViewBag.Produtos = Produtos;
+
+            var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
+            string layout = userRole == "Cliente" ? "~/Views/Shared/_LayoutCliente.cshtml" : "~/Views/Shared/_Layout.cshtml";
+
+            ViewData["Layout"] = layout;
+
 
             return View();
         }
@@ -36,6 +42,10 @@ namespace Customzito.Controllers
             var Tipo = await _czContext.TdTipoVestimenta
                 .FirstOrDefaultAsync(x => x.IdTipoVestimenta == Produto.IdTipoVestimenta);
 
+            var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
+            string layout = userRole == "Cliente" ? "~/Views/Shared/_LayoutCliente.cshtml" : "~/Views/Shared/_Layout.cshtml";
+
+            ViewData["Layout"] = layout;
 
             ViewBag.Tipo = Tipo.Descricao;
 

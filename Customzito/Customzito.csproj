@@ -36,6 +36,7 @@
     <Folder Include="Views\Customizados\" />
     <Folder Include="Views\Masculino\" />
     <Folder Include="Views\Feminino\" />
+    <Folder Include="Views\Externo\" />
     <Folder Include="wwwroot\images\custom-bases\" />
     <Folder Include="wwwroot\uploads\" />
   </ItemGroup>

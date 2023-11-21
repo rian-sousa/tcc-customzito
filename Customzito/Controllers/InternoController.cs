@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Customzito.Controllers
 {
-    [Authorize]
+    [Authorize (Roles = "Administrador")]
     public class InternoController : Controller
     {
         private CZContext _czContext;
@@ -18,14 +18,22 @@ namespace Customzito.Controllers
             _czContext = contexto;
         }
 
-        [Authorize]
         public IActionResult Index()
         {
+            var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
+            string layout = userRole == "Cliente" ? "~/Views/Shared/_LayoutCliente.cshtml" : "~/Views/Shared/_LoggedLayout.cshtml";
+
+            ViewData["Layout"] = layout;
+
+
             return View();
         }
 
         public async Task<IActionResult> PedidosCustomizados()
         {
+            var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
+            string layout = userRole == "Cliente" ? "~/Views/Shared/_LayoutCliente.cshtml" : "~/Views/Shared/_LoggedLayout.cshtml";
+
             var PedidosCompletos = await RecuperarPedidosCompletos();
 
             return View();
@@ -41,7 +49,7 @@ namespace Customzito.Controllers
             var Carrinhos = await _czContext.TbCarrinho
                 .ToListAsync();
 
-            var Usuarios = await _czContext.AspNetUser
+            var Usuarios = await _czContext.AspNetUsers
                 .ToListAsync();
 
             var Stats = await _czContext.Status

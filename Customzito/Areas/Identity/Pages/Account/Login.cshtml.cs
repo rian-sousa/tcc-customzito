@@ -37,7 +37,7 @@ namespace Customzito.Areas.Identity.Pages.Account
         public string? ReturnUrl { get; set; }
 
         [TempData]
-        public string ErrorMessage { get; set; }
+        public string? ErrorMessage { get; set; }
 
         public class InputModel
         {
@@ -71,46 +71,42 @@ namespace Customzito.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/Interno/Index");
+            
 
             if (ModelState.IsValid)
             {
                 var match = Regex.Match(Input.Email, @"^(.*)@.*$");
-
                 var username = match.Groups[1].Value;
 
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(username, Input.Password, Input.RememberMe, lockoutOnFailure: false); //Finalizar login
-                
+                var result = await _signInManager.PasswordSignInAsync(username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
 
-                    Response.Cookies.Append("UsuarioLogado", username, new CookieOptions
+                    var user = await _userManager.FindByNameAsync(username);
+                    var roles = await _userManager.GetRolesAsync(user);
+
+                    HttpContext.Session.SetString("UserRole", roles.FirstOrDefault() ?? "DefaultRole");
+
+                    
+
+                    if (roles.Contains("Administrador"))
                     {
-                        Expires = DateTimeOffset.Now.AddMinutes(90) // Configure conforme necessário
-                    });
-
-
-                    var claims = new List<Claim>
+                        returnUrl ??= Url.Content("~/Interno/Index");
+                        Console.WriteLine("=========================");
+                        Console.WriteLine();
+                        Console.WriteLine("-------------------------------");
+                        return RedirectToAction("Index", "Interno");
+                    }
+                    else
                     {
-                        new Claim(ClaimTypes.NameIdentifier, Input.Email),
-                        new Claim(ClaimTypes.Name, Input.Email),
-                        new Claim(ClaimTypes.Email, Input.Email),
-                    };
-                        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                        var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal, new AuthenticationProperties());
-
-                    return RedirectToAction("Index", "Interno");
+                        returnUrl ??= Url.Content("~/Home/Index");
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                }
+
+
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning("User account locked out.");
