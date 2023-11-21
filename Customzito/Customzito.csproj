@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <Compile Remove="Areas\**" />
     <Compile Remove="Support\**" />
     <Compile Remove="wwwroot\support\NewFolder\**" />
@@ -19,7 +19,7 @@
     <None Remove="Areas\**" />
     <None Remove="Support\**" />
     <None Remove="wwwroot\support\NewFolder\**" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <Compile Include="Areas\Identity\Data\CustomzitoContext.cs" />
@@ -32,13 +32,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Support\Dlls\" />
-    <Folder Include="Views\Customizados\" />
-    <Folder Include="Views\Masculino\" />
-    <Folder Include="Views\Feminino\" />
-    <Folder Include="Views\Externo\" />
-    <Folder Include="wwwroot\images\custom-bases\" />
-    <Folder Include="wwwroot\uploads\" />
+    <Folder Include="Services\" />
+	<Folder Include="Support\" />
+    <Folder Include="Views\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
