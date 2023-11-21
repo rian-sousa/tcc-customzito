@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Customzito.Controllers
 {
+    [AllowAnonymous]
     public class CollectionsController : Controller
     {
         private readonly CZContext _czContext;
@@ -14,7 +15,7 @@ namespace Customzito.Controllers
             _czContext = czContext;
         }
 
-        [AllowAnonymous]
+        
         public async Task<IActionResult> Index()
         {
             var Colecoes = await _czContext.TbColecao
@@ -31,15 +32,23 @@ namespace Customzito.Controllers
             return View();
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Quebradas()
         {
+            var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
+            string layout = userRole == "Cliente" ? "/Views/Shared/_LayoutCliente.cshtml" : "/Views/Shared/_Layout.cshtml";
+
+            TempData["Layout"] = layout;
+
             return View();
         }
 
-        [AllowAnonymous]
         public IActionResult Classic()
         {
+            var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
+            string layout = userRole == "Cliente" ? "/Views/Shared/_LayoutCliente.cshtml" : "/Views/Shared/_Layout.cshtml";
+
+            TempData["Layout"] = layout;
+
             return View();
         }
     }

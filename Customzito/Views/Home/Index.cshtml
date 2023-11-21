@@ -2,8 +2,9 @@
 @using Customzito.Views.Home;
 @model IndexModel
 @{
-    //ViewData["Title"] = "Customzito";
+    Layout = TempData["Layout"] as string;
 }
+
 
 <!-- Carrossel -->
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">

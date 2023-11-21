@@ -8,7 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Customzito.Controllers
 {
-    [Authorize (Roles = "Administrador")]
+    //[Authorize(Roles = "Administrador")]
+    //[Authorize]
+    [AllowAnonymous]
     public class InternoController : Controller
     {
         private CZContext _czContext;
@@ -33,8 +35,11 @@ namespace Customzito.Controllers
         {
             var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
             string layout = userRole == "Cliente" ? "~/Views/Shared/_LayoutCliente.cshtml" : "~/Views/Shared/_LoggedLayout.cshtml";
+            ViewData["Layout"] = layout;
 
             var PedidosCompletos = await RecuperarPedidosCompletos();
+
+            ViewBag.Pedidos = PedidosCompletos;
 
             return View();
         }
@@ -49,9 +54,6 @@ namespace Customzito.Controllers
             var Carrinhos = await _czContext.TbCarrinho
                 .ToListAsync();
 
-            var Usuarios = await _czContext.AspNetUsers
-                .ToListAsync();
-
             var Stats = await _czContext.Status
                 .ToListAsync();
 
@@ -59,7 +61,7 @@ namespace Customzito.Controllers
                 .ToListAsync();
 
             var JoinPedidoCompleto = from Carrinho in Carrinhos
-                                     join Usuario in Usuarios on Carrinho.IdPerfil equals Usuario.IdPerfil
+                                     //join Usuario in Usuarios on Carrinho.IdPerfil equals Usuario.IdPerfil
                                      join Perfil in Perfis on Carrinho.IdPerfil equals Perfil.IdPerfil
                                      join Produto in Produtos on Carrinho.IdProduto equals Produto.IdProduto
                                      join STS in Stats on Produto.IdProduto equals STS.IdStatus
@@ -67,7 +69,7 @@ namespace Customzito.Controllers
                                      {
                                          Protocolo = Carrinho.Protocolo,
                                          ValorTotal = Carrinho.ValorTotal,
-                                         Email = Usuario.Email,
+                                         //Email = Usuario.Email,
                                          TipoPedido = (Produto.IdPedidoCustomizado != null) ? "CUSTOMIZADO" : "FÁBRICA",
                                          Status = STS.DescricaoInterna,
                                          IdCarrinho = Carrinho.IdCarrinho,

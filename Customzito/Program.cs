@@ -29,7 +29,11 @@ builder.Services.AddDefaultIdentity<AspNetUsers>(options => options.SignIn.Requi
 
 builder.Services.AddRazorPages();
 
-builder.Services.AddMvc();
+builder.Services.AddMvc().AddRazorOptions(options =>
+{
+    options.ViewLocationFormats.Add("/Views/{1}/{0}.cshtml");
+    options.ViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
+});
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -56,7 +60,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     // Cookie settings
     //options.Cookie.HttpOnly = true;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
 
     options.LoginPath = "/Identity/Account/Login";
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
@@ -78,11 +82,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("FuncaoAdm",
-        policy => policy.RequireRole("Administrador"));
+    //options.AddPolicy("FuncaoAdm",
+    //    policy => policy.RequireRole("Administrador"));
 
-    options.AddPolicy("Cliente",
-        policy => policy.RequireRole("Cliente"));
+    //options.AddPolicy("Cliente",
+    //    policy => policy.RequireRole("Cliente"));
 
     options.FallbackPolicy = new AuthorizationPolicyBuilder()
         .RequireAuthenticatedUser()
@@ -92,8 +96,9 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(90);
-    options.Cookie.HttpOnly = false;
+    options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
+    options.Cookie.SameSite = SameSiteMode.Lax;
 });
 
 var app = builder.Build();
@@ -112,9 +117,9 @@ app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
     {
-        ctx.Context.Response.Headers.Add("Cache-Control", "no-store");
-        ctx.Context.Response.Headers.Add("Pragma", "no-cache");
-        ctx.Context.Response.Headers.Add("Expires", "-1");
+        //ctx.Context.Response.Headers.Add("Cache-Control", "no-store");
+        //ctx.Context.Response.Headers.Add("Pragma", "no-cache");
+        //ctx.Context.Response.Headers.Add("Expires", "-1");
     }
 });
 

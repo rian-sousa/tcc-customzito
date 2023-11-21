@@ -66,6 +66,7 @@ namespace Customzito.Areas.Identity.Pages.Account
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
 
+
             ReturnUrl = returnUrl;
         }
 
@@ -89,14 +90,9 @@ namespace Customzito.Areas.Identity.Pages.Account
 
                     HttpContext.Session.SetString("UserRole", roles.FirstOrDefault() ?? "DefaultRole");
 
-                    
-
                     if (roles.Contains("Administrador"))
                     {
                         returnUrl ??= Url.Content("~/Interno/Index");
-                        Console.WriteLine("=========================");
-                        Console.WriteLine();
-                        Console.WriteLine("-------------------------------");
                         return RedirectToAction("Index", "Interno");
                     }
                     else

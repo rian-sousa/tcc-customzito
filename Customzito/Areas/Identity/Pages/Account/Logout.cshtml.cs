@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using CustomBancoLib;
+using System.Data;
 
 namespace Customzito.Areas.Identity.Pages.Account
 {
@@ -34,7 +35,14 @@ namespace Customzito.Areas.Identity.Pages.Account
             _logger.LogInformation("User logged out.");
             if (returnUrl != null)
             {
-                return LocalRedirect(returnUrl);
+                var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
+                HttpContext.Session.SetString("UserRole","DefaultRole");
+
+                string layout = "/Views/Shared/_Layout.cshtml";
+
+                TempData["Layout"] = layout;
+
+                return RedirectToAction("Index","Home");
             }
             else
             {

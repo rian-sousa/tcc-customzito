@@ -25,15 +25,15 @@ namespace Customzito.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<AspNetUsers> _signInManager;
+        private UserManager<AspNetUsers> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         //private readonly IEmailSender _emailSender;
         private CZContext _czContext;
 
         public RegisterModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<AspNetUsers> userManager,
+            SignInManager<AspNetUsers> signInManager,
             ILogger<RegisterModel> logger,
             //IEmailSender emailSender,
             CZContext context
@@ -80,8 +80,8 @@ namespace Customzito.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            var Roles = await _czContext.IdentityRole.ToListAsync();
-                //.FirstOrDefaultAsync(x => x.Id == "7E43994F-FDE6-4061-AA98-B76B17E64079");
+            var Role = await _czContext.IdentityRole
+                .FirstOrDefaultAsync(x => x.Id == "7E43994F-FDE6-4061-AA98-B76B17E64079");
 
             //List<IdentityRole> Roles = new List<IdentityRole> { RoleCliente };
 
@@ -94,12 +94,35 @@ namespace Customzito.Areas.Identity.Pages.Account
 
                 username = Regex.Replace(username, @"[^a-zA-Z0-9]", "");
 
-                var user = new IdentityUser { UserName = username, Email = Input.Email  };
+                TB_Endereco endereco = new() { Quadra = $"custom{username}"};
 
+                await _czContext.TbEndereco
+                    .AddAsync(endereco);
 
-                await _userManager.AddToRoleAsync(user, "Cliente");
+                await _czContext.SaveChangesAsync();
+
+                var EnderecoRegistrado = await _czContext.TbEndereco
+                    .FirstOrDefaultAsync(x => x.Quadra == $"custom{username}");
+
+                TB_Perfil perfil = new() { Nome = username, Sobrenome = "Sobrenome", DataNascimento = DateTime.Now.AddYears(-18), IdTipoUsuario = 2, IdEndereco = EnderecoRegistrado.IdEndereco};
+
+                await _czContext.TbPerfil
+                    .AddAsync(perfil);
+
+                await _czContext.SaveChangesAsync();
+
+                var perfilRegistrado = await _czContext.TbPerfil
+                    .FirstOrDefaultAsync(x => x.Nome == username);
+
+                var user = new AspNetUsers { UserName = username, Email = Input.Email, IdPerfil = perfilRegistrado.IdPerfil, RoleId = Role.Id };                               
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
+                var AspCriado = await _czContext.AspNetUsers
+                    .FirstOrDefaultAsync(x => x.UserName == username);
+
+                await _userManager.AddToRoleAsync(AspCriado, "Cliente");
+               
 
                 if (result.Succeeded)
                 {
