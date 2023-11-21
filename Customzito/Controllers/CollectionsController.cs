@@ -34,20 +34,12 @@ namespace Customzito.Controllers
 
         public async Task<IActionResult> Quebradas()
         {
-            var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
-            string layout = userRole == "Cliente" ? "/Views/Shared/_LayoutCliente.cshtml" : "/Views/Shared/_Layout.cshtml";
-
-            TempData["Layout"] = layout;
 
             return View();
         }
 
         public IActionResult Classic()
         {
-            var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
-            string layout = userRole == "Cliente" ? "/Views/Shared/_LayoutCliente.cshtml" : "/Views/Shared/_Layout.cshtml";
-
-            TempData["Layout"] = layout;
 
             return View();
         }
