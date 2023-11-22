@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Customzito.Controllers
 {
+    [AllowAnonymous]
     public class ProdutosController : Controller
     {
         private readonly CZContext _czContext;
@@ -15,7 +16,7 @@ namespace Customzito.Controllers
             _czContext = context;
         }
 
-        [AllowAnonymous]
+        
         public async Task<ActionResult> Index()
         {
             var Produtos = await _czContext.TbProduto
@@ -32,7 +33,6 @@ namespace Customzito.Controllers
             return View();
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Item(int id)
         
         {

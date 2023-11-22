@@ -100,6 +100,9 @@ namespace Customzito.Areas.Identity.Pages.Account
 
                     HttpContext.Session.SetString("UserRole", roles.FirstOrDefault() ?? "DefaultRole");
 
+                    //TempData["AspUsuario"] = user.UserName;
+                    //TempData.Keep("AspUsuario");
+
                     if (roles.Contains("Administrador"))
                     {
                         returnUrl ??= Url.Content("~/Interno/Index");

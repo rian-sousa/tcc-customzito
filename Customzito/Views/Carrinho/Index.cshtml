@@ -1,0 +1,186 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    if (TempData["Layout"] is not null)
+    {
+        Layout = TempData["Layout"] as string;
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+
+<div class="container">
+    <div class="col-md-12">
+        
+        <div class="mt-4">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Carrinho</li>
+                    <li class="breadcrumb-item active" aria-current="page">Geral</li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="accordion mt-3 " id="accordionExample">
+            <div class="accordion-item ">
+                <div class="accordion-header accordion-button " id="headingOne" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <div class="row text-center">
+                        <div class="col-md-2">
+                            <i class=" fs-1 material-symbols-outlined">
+                                home
+                            </i>
+                        </div>
+                        <div class="col-md-2 px-4">
+                            <b class="fs-2 ml-5">
+                                ENDEREÇO
+                            </b>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">Quadra</span>
+                                    <input type="text" class="form-control" placeholder="Ex: 68" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">Lote</span>
+                                    <input type="text" class="form-control" placeholder="Ex: 12" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">Número</span>
+                                    <input type="text" class="form-control" placeholder="Ex: 201" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">Cidade</span>
+                                    <input type="text" class="form-control" placeholder="Ex: Cidade Ocidental" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">                            
+                            <div class="col-md-3">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">Estado</span>
+                                    <input type="text" class="form-control" placeholder="Ex: Goiás" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">Complemento</span>
+                                    <input type="text" class="form-control" placeholder="Ex: Cond. Villa Londres" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">CEP</span>
+                                    <input type="text" class="form-control" placeholder="EX: 72885-089" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-end">
+                                <button class="btn btn-secondary">Editar</button>
+                                <button class="btn btn-secondary">Novo Endereço</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header accordion-button accordion collapsed" id="headingTwo" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="row text-center">
+                        <div class="col-md-2">
+                            <i class=" fs-1 material-symbols-outlined">
+                                apparel
+                            </i>
+                        </div>
+                        <div class="col-md-2 px-4">
+                            <b class="fs-2 ml-5">
+                                ROUPAS
+                            </b>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" >
+                    <div class="accordion-body">
+                        @*@foreach(var item in Carrinho)
+                        {
+                            
+                        }*@
+                        <div class="row">
+                            <div class="col-md-5">
+                                IMAGEMROUPA
+                                TITULO-ROUPA
+                            </div>
+                            <div class="col-md-3">
+                                quantidade
+                                #
+                            </div>
+                            <div class="col-md-3">
+                                Preco item
+                                R$ 5000
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header accordion-button accordion collapsed" id="headingThree" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <div class="row text-center">
+                        <div class="col-md-2">
+                            <i class=" fs-1 material-symbols-outlined">
+                                local_shipping
+                            </i>
+                        </div>
+                        <div class="col-md-2 px-4">
+                            <b class="fs-2">
+                                FRETE
+                            </b>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" >
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                ENDEREÇO COMPLETO
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Expresso
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Padrão
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

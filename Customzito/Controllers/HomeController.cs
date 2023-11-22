@@ -16,12 +16,20 @@ namespace Customzito.Controllers
         }
 
         
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? id)
         {
             var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
             string layout = userRole == "Cliente" ? "/Views/Shared/_LayoutCliente.cshtml" : (userRole == "Administrador")? "/Views/Shared/_LoggedLayout.cshtml" : "/Views/Shared/_Layout.cshtml";
 
             TempData["Layout"] = layout;
+
+            if(userRole == "Cliente")
+            {
+                var Perfil = await _czContext.TbPerfil
+                    .FirstOrDefaultAsync(x => x.IdPerfil == id);
+
+                ViewBag.PerfilCliente = Perfil;
+            }
 
             return View();
         }
