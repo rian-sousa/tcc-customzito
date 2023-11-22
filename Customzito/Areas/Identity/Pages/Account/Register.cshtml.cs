@@ -114,7 +114,7 @@ namespace Customzito.Areas.Identity.Pages.Account
                 var perfilRegistrado = await _czContext.TbPerfil
                     .FirstOrDefaultAsync(x => x.Nome == username);
 
-                var user = new AspNetUsers { UserName = username, Email = Input.Email, IdPerfil = perfilRegistrado.IdPerfil};                               
+                var user = new AspNetUsers { UserName = username, Email = Input.Email, IdPerfil = perfilRegistrado.IdPerfil };                               
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 

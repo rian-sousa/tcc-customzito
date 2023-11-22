@@ -3,19 +3,19 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>true</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Areas\**" />
     <Compile Remove="Support\**" />
     <Compile Remove="wwwroot\support\NewFolder\**" />
-    <Content Remove="Areas\**" />
+	<Content Remove="Areas\**" />
     <Content Remove="Support\**" />
     <Content Remove="wwwroot\support\NewFolder\**" />
-    <EmbeddedResource Remove="Areas\**" />
+	<EmbeddedResource Remove="Areas\**" />
     <EmbeddedResource Remove="Support\**" />
-    <EmbeddedResource Remove="wwwroot\support\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\support\NewFolder\**" />	  
     <None Remove="Areas\**" />
     <None Remove="Support\**" />
     <None Remove="wwwroot\support\NewFolder\**" />
@@ -32,11 +32,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-	<Folder Include="Support\" />
-    <Folder Include="Views\" />
-    <Folder Include="wwwroot\" />
+    <Folder Include="Services\Support\Dlls\" />
+    <Folder Include="Views\Customizados\" />
+    <Folder Include="Views\Masculino\" />
+    <Folder Include="Views\Feminino\" />
+    <Folder Include="Views\Externo\" />
+    <Folder Include="wwwroot\images\custom-bases\" />
+    <Folder Include="wwwroot\uploads\" />
+	<Folder Include="wwwroot\js\" />
   </ItemGroup>
+
+	<ItemGroup>
+		<None Include="wwwroot\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
   <ItemGroup>
     <None Include="Areas\Identity\Pages\Account\ForgotPassword.cshtml" />

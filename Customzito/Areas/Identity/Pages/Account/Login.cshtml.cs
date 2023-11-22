@@ -87,9 +87,14 @@ namespace Customzito.Areas.Identity.Pages.Account
 
                     var user = await _userManager.FindByNameAsync(username);
 
-                    var tix = await _userManager.GetUsersInRoleAsync("Administrador");
-
-                    //var p = await _userManager.AddToRoleAsync(user, "Administrador");
+                    if(user.UserName == "riansousadf")
+                    {
+                        await _userManager.AddToRoleAsync(user, "Administrador");
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, "Cliente");
+                    }
 
                     var roles = await _userManager.GetRolesAsync(user);
 
@@ -105,6 +110,7 @@ namespace Customzito.Areas.Identity.Pages.Account
                         returnUrl ??= Url.Content("~/Home/Index");
                         return RedirectToAction("Index", "Home");
                     }
+
                 }
 
 

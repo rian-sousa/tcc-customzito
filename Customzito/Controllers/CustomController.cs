@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Customzito.Controllers
 {
+    [AllowAnonymous]
     public class CustomController : Controller
     {
         private readonly CZContext _czContext;
@@ -12,14 +13,13 @@ namespace Customzito.Controllers
         {
             _czContext = context;
         }
-
-        [AllowAnonymous]
+        
         public async Task<ActionResult> Index()
         {
             var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
-            string layout = userRole == "Cliente" ? "~/Views/Shared/_LayoutCliente.cshtml" : "~/Views/Shared/_Layout.cshtml";
+            string layout = userRole == "Cliente" ? "/Views/Shared/_LayoutCliente.cshtml" : (userRole == "Administrador") ? "/Views/Shared/_LoggedLayout.cshtml" : "/Views/Shared/_Layout.cshtml";
 
-            ViewData["Layout"] = layout;
+            TempData["Layout"] = layout;
 
             return View();
         }

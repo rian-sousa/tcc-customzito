@@ -22,9 +22,9 @@ namespace Customzito.Controllers
                 .ToListAsync();
 
             var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
-            string layout = userRole == "Cliente" ? "~/Views/Shared/_LayoutCliente.cshtml" : "~/Views/Shared/_Layout.cshtml";
+            string layout = userRole == "Cliente" ? "/Views/Shared/_LayoutCliente.cshtml" : (userRole == "Administrador") ? "/Views/Shared/_LoggedLayout.cshtml" : "/Views/Shared/_Layout.cshtml";
 
-            ViewData["Layout"] = layout;
+            TempData["Layout"] = layout;
 
 
             ViewBag.Colecoes = Colecoes;
@@ -34,12 +34,18 @@ namespace Customzito.Controllers
 
         public async Task<IActionResult> Quebradas()
         {
+            var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
+            string layout = userRole == "Cliente" ? "/Views/Shared/_LayoutCliente.cshtml" : (userRole == "Administrador") ? "/Views/Shared/_LoggedLayout.cshtml" : "/Views/Shared/_Layout.cshtml";
 
             return View();
         }
 
         public IActionResult Classic()
         {
+            var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
+            string layout = userRole == "Cliente" ? "/Views/Shared/_LayoutCliente.cshtml" : (userRole == "Administrador") ? "/Views/Shared/_LoggedLayout.cshtml" : "/Views/Shared/_Layout.cshtml";
+
+            TempData["Layout"] = layout;
 
             return View();
         }
