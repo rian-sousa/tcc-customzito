@@ -86,8 +86,11 @@ namespace Customzito.Areas.Identity.Pages.Account
                     _logger.LogInformation("User logged in.");
 
                     var user = await _userManager.FindByNameAsync(username);
+
+                    var tix = await _userManager.GetUsersInRoleAsync("Administrador");
+
                     //var p = await _userManager.AddToRoleAsync(user, "Administrador");
-                    
+
                     var roles = await _userManager.GetRolesAsync(user);
 
                     HttpContext.Session.SetString("UserRole", roles.FirstOrDefault() ?? "DefaultRole");
