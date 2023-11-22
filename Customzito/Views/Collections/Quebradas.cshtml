@@ -1,7 +1,14 @@
 ﻿
 @{
     ViewData["Title"] = "View";
-    Layout = TempData["Layout"] as string;
+    if (TempData["Layount"] is not null)
+    {
+        Layout = TempData["Layout"] as string;
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }
 
 <h1>View</h1>
