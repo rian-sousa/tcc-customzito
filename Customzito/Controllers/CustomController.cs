@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Customzito.Controllers
 {
+    [AllowAnonymous]
     public class CustomController : Controller
     {
         private readonly CZContext _czContext;
@@ -12,8 +13,7 @@ namespace Customzito.Controllers
         {
             _czContext = context;
         }
-
-        [AllowAnonymous]
+        
         public async Task<ActionResult> Index()
         {
             var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
