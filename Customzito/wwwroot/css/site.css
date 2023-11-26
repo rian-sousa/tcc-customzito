@@ -6,17 +6,131 @@
 }
 
 body {
-    --verde-claro: #8CD918;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 20px;
     font-style: normal;
+    background-color: #D9D9D9;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
-.searchBtn{
-    background-color: var(--verde-claro)
+.footer {
+    color: white;
+    background-color: black;
+
 }
 
-.custom-text{
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.list-unstyled i {
+    font-size: 24px;
+}
+
+.navbar {
+    color: black;
+    background-color: white; 
+    height: 100px;
+    margin: 20px;
+    border-radius: 16px;
+    padding: 0.5rem;
+}
+
+.navbar-brand {
+    font-weight: 500;
+    color: black;
+    font-size: 24px;
+    transition: 0.3s color;
+}
+
+.navbar-nav .nav-link {
+    color: black;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-item.dropdown .dropdown-menu .dropdown-item {
+    color: black;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: black;
+}
+
+.botao-pesquisa {
+    margin-left: -10px;
+    border-radius: 16px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+}
+
+.search-input {
+    border: 1px solid;
+    border-radius: 16px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: -10px;
+}
+
+.search-input:focus{
+    outline: none;
+    border-color: black;
+}
+
+@media (min-width: 991px) {
+    .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: black;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+    }
+
+    .nav-link:hover::before, .nav-link.active::before {
+        width: 100%;
+        visibility: visible;
+    }
+}
+
+.banner-1 {
+    width: 100%;
+    height: auto;
+    margin-top: 110px;
+    position: relative;
+}
+
+.banner-2 {
+    width: 100%;
+    height: auto;
+   
+}
+
+.card-move {
+    transition: all 0.3s;
+}
+
+.card-move:hover {
+    transform: scale(1.10);
+}
+
+.botao-padrao {
+    background-color: black;
+    color: white;
+    font-size: 17px;
+}
+
+
+/*Personalização*/
+.custom-text {
     font-size: 15px;
 }
 
@@ -100,15 +214,6 @@ body {
     color: white; /* Adicionando cor de texto para melhor visibilidade no fundo vermelho */
 }
 
-/* Estilo do menu */
-.menu {
-   /*text-align: center;*/
-}
-
-.botao-padrao {
-    background-color: var(--verde-claro);
-    color: black;
-}
 
 a.no-underline {
     text-decoration: none; /* Remove o sublinhado */
