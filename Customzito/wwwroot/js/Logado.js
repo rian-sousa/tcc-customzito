@@ -1,10 +1,18 @@
-﻿$(document).ready(function () {
+﻿// Valores constantes
+const meses = [
+    "Janeiro", "Fevereiro", "Março",
+    "Abril", "Maio", "Junho",
+    "Julho", "Agosto", "Setembro",
+    "Outubro", "Novembro", "Dezembro"];
+
+
+$(document).ready(function () {
 
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-tt="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
-    })
-    
+    });
+
 
 })
 
@@ -222,4 +230,228 @@ function EditarRoupa() {
             $('#EditarRoupaPartial').html(data);
         }
     })
+}
+
+
+function gerarGraficoFaturamentoMensal(decimais) {
+    new Chart(faturamentoMensal, {
+        type: 'line',
+        data: {
+            labels: meses,
+            datasets: [{
+                label: "Vendas Totais",
+                data: decimais,
+                borderColor: '#800080',
+                fill: false,
+            }
+            //{
+            //    label: "Boletos",
+            //    data: listaBoletosMensal,
+            //    borderColor: '#4bc0c0',
+            //    fill: false,
+            //}
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: ctx => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumSignificantDigits: 3 }).format(ctx.parsed.y)
+                    }
+                },
+                title: {
+                    display: false,
+                    text: "Faturamento Mensal",
+                    padding: {
+                        top: 10,
+                        bottom: 5
+                    },
+                    font: {
+                        size: 20,
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        callback: function (value, index, values) {
+                            return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumSignificantDigits: 3 }).format(value);
+                        }
+                    }
+                }
+            },
+            stacked: true,
+            responsive: true,
+        }
+    });
+}
+
+
+function gerarGraficoFaturamentoMensalCustomFabricados(decimalCustom, decimalFabricado) {
+    new Chart(faturamentoMensalTipo, {
+        type: 'line',
+        data: {
+            labels: meses,
+            datasets: [{
+                label: "Vendas - Customizados",
+                data: decimalCustom,
+                borderColor: '#C6262C',
+                fill: false,
+            },
+            {
+                label: "Vendas - Fabricados",
+                data: decimalFabricado,
+                borderColor: '#4bc0c0',
+                fill: false,
+            }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: ctx => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumSignificantDigits: 3 }).format(ctx.parsed.y)
+                    }
+                },
+                title: {
+                    display: false,
+                    text: "Faturamento Mensal",
+                    padding: {
+                        top: 10,
+                        bottom: 5
+                    },
+                    font: {
+                        size: 20,
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        callback: function (value, index, values) {
+                            return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumSignificantDigits: 3 }).format(value);
+                        }
+                    }
+                }
+            },
+            stacked: true,
+            responsive: true,
+        }
+    });
+}
+
+
+function gerarGraficoVendasTipos(collections, products) {
+
+    const nomesColecoes = collections.map(item => item[0]);
+    const vendasColecoes = collections.map(item => item[1]);
+
+    const nomesProdutos = products.map(item => item[0]);
+    const vendasProdutos = products.map(item => item[1]);
+
+    new Chart(VendasColecao, {
+        type: 'bar',
+        data: {
+            labels: nomesColecoes,
+            datasets: [{
+                label: 'Vendas por Coleção',
+                data: vendasColecoes,
+                backgroundColor: '#C6262C',
+                borderColor: '#C6262C',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: (tooltipItem) => {
+                            return new Intl.NumberFormat('pt-BR', {
+                                style: 'currency',
+                                currency: 'BRL',
+                                maximumSignificantDigits: 3
+                            }).format(tooltipItem.parsed.y);
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Vendas por Coleção',
+                    font: {
+                        size: 20
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        callback: (value) => {
+                            return new Intl.NumberFormat('pt-BR', {
+                                style: 'currency',
+                                currency: 'BRL',
+                                maximumSignificantDigits: 3
+                            }).format(value);
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    new Chart(VendasProduto, {
+        type: 'bar',
+        data: {
+            labels: nomesProdutos,
+            datasets: [{
+                label: 'Vendas por Produto',
+                data: vendasProdutos,
+                backgroundColor: '#4bc0c0',
+                borderColor: '#4bc0c0',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: (tooltipItem) => {
+                            return new Intl.NumberFormat('pt-BR', {
+                                style: 'currency',
+                                currency: 'BRL',
+                                maximumSignificantDigits: 3
+                            }).format(tooltipItem.parsed.y);
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Vendas por Produto',
+                    font: {
+                        size: 20
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        callback: (value) => {
+                            return new Intl.NumberFormat('pt-BR', {
+                                style: 'currency',
+                                currency: 'BRL',
+                                maximumSignificantDigits: 3
+                            }).format(value);
+                        }
+                    }
+                }
+            }
+        }
+    });
 }
