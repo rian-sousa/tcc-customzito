@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Customzito.Controllers
 {
+    [AllowAnonymous]
     public class SobreController : Controller
     {
-        [AllowAnonymous]
         public IActionResult Index()
         {
             var userRole = HttpContext.Session.GetString("UserRole") ?? "DefaultRole";
