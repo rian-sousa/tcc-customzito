@@ -10,6 +10,9 @@
     {
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
+
+    var TopProdutos = ViewBag.TopProdutos;
+    int contador = 0;
 }
 
 
@@ -20,78 +23,52 @@
     <div class="container mt-5">
         <h1 class="text-center mb-5">MAIS VENDIDOS</h1>
 
-        <div class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel slide" data-bs-ride="carousel" id="indicadorCarosel">
             <div class="carousel-inner">
                 <!-- Slide  -->
-                <div class="carousel-item active">
-                    <div class="d-flex justify-content-center">
-                        <div class="card me-3">
-                            <img src="produto1.jpg" class="card-img-top img-fluid" alt="Produto 1">
-                            <div class="card-body">
-                                <h5 class="card-title">Produto 1</h5>
-                                <p class="card-text">Descrição do Produto 1.</p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
-                            </div>
-                        </div>
+                @foreach (var Produto in TopProdutos)
+                {
+                    contador++;
 
-                        <div class="card me-3">
-                            <img src="produto2.jpg" class="card-img-top img-fluid" alt="Produto 2">
-                            <div class="card-body">
-                                <h5 class="card-title">Produto 2</h5>
-                                <p class="card-text">Descrição do Produto 2.</p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
+                    @if(contador == 1)
+                    {
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-center">
+                                <div class="card me-3">
+                                    <img src="@Produto.UrlImagem" class="card-img-top img-fluid" alt="Produto 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@Produto.Titulo</h5>
+                                        <p class="card-text">@Produto.Descricao</p>
+                                        <a href="#" class="btn btn-primary">Comprar</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="card me-3">
-                            <img src="produto3.jpg" class="card-img-top img-fluid" alt="Produto 3">
-                            <div class="card-body">
-                                <h5 class="card-title">Produto 3</h5>
-                                <p class="card-text">Descrição do Produto 3.</p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
+                    }
+                    else
+                    {
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-center">
+                                <div class="card me-3">
+                                    <img src="@Produto.UrlImagem" class="card-img-top img-fluid" alt="Produto 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@Produto.Titulo</h5>
+                                        <p class="card-text">@Produto.Descricao</p>
+                                        <a href="#" class="btn btn-primary">Comprar</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="carousel-item active">
-                    <div class="d-flex justify-content-center">
-                        <div class="card me-3">
-                            <img src="produto4.jpg" class="card-img-top img-fluid" alt="Produto 4">
-                            <div class="card-body">
-                                <h5 class="card-title">Produto 4</h5>
-                                <p class="card-text">Descrição do Produto 4.</p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
-                            </div>
-                        </div>
-
-                        <div class="card me-3">
-                            <img src="produto5.jpg" class="card-img-top img-fluid" alt="Produto 5">
-                            <div class="card-body">
-                                <h5 class="card-title">Produto 5</h5>
-                                <p class="card-text">Descrição do Produto 5.</p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
-                            </div>
-                        </div>
-
-                        <div class="card me-3">
-                            <img src="produto6.jpg" class="card-img-top img-fluid" alt="Produto 6">
-                            <div class="card-body">
-                                <h5 class="card-title">Produto 6</h5>
-                                <p class="card-text">Descrição do Produto 6.</p>
-                                <a href="#" class="btn btn-primary">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                    }
+                }
                 <!-- Repita a estrutura acima para os Slides 2, 3, 4, 5, 6 -->
 
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#indicadorCarosel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Anterior</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#indicadorCarosel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Próximo</span>
             </button>

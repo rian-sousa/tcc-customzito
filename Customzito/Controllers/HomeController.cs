@@ -31,6 +31,13 @@ namespace Customzito.Controllers
                 ViewBag.PerfilCliente = Perfil;
             }
 
+            var TopProdutos = await _czContext.TbProduto
+                .OrderBy(produto => produto.qtd)
+                .Take(5)
+                .ToListAsync();
+
+            ViewBag.TopProdutos = TopProdutos;
+
             return View();
         }
 
