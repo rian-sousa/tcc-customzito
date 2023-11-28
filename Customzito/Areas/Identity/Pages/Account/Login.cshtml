@@ -5,62 +5,69 @@
     ViewData["Title"] = "Log in";
 }
 
-<div class="container-sm mt-5 d-flex align-items-center justify-content-center">
-    
+<section style="margin-top: 200px;">
+    <div class="container-sm mt-5 d-flex align-items-center justify-content-center">
 
-    <div class="col-md-6 text-align-center">
-        <div class="text-center" style="letter-spacing: 5px; font-size: 60px;">BEM-VINDO AO CUSTOMZITO!</div>
-        <form id="account" method="post">
-            <div class="row mb-3">
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <i class="bi bi-person-fill fs-4 material-symbols-outlined">person</i> @*colocar material icons*@
-                    </span>
-                    <input asp-for="Input.Email" autocomplete="username" aria-required="true" placeholder="E-mail" class="form-control form-control-lg border-start-0" />
+
+        <div class="col-md-6 text-align-center">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="text-center" style="letter-spacing: 5px; font-size: 60px;"><i class="fas fa-user-circle"></i></div>
+                    <form id="account" method="post">
+                        <div class=" mt-3 row mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-person-fill fs-4 material-symbols-outlined">person</i> @*colocar material icons*@
+                                </span>
+                                <input asp-for="Input.Email" autocomplete="username" aria-required="true" placeholder="E-mail" class="form-control form-control-lg border-start-0" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-key-fill fs-4 material-symbols-outlined">lock</i>
+                                </span>
+                                <input asp-for="Input.Password" autocomplete="off" aria-required="true" placeholder="Senha" class="form-control form-control-lg border-start-0" />
+                                <input asp-for="ReturnUrl" value="/" class="form-check-input" hidden />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6 col-sm-12 my-md-0 my-3 text-md-start text-center">
+                                <div class="form-check">
+                                    <input asp-for="Input.RememberMe" type="checkbox" class="form-check-input" checked />
+                                    <label class="form-check-label">
+                                        Continuar Conectado
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 text-md-end text-center">
+                                <a class="text-primary" asp-page="/Account/ForgotPassword">Esqueci minha senha!</a>
+                            </div>
+                        </div>
+                        @*@if (authenticationFailed == true)
+                        {
+                        <div class="row mb-2">
+                        <div class="col text-center text-danger">
+                        Credenciais Inválidas!
+                        </div>
+                        </div>
+                        }*@
+                        @*<div asp-validation-summary="ModelOnly" class="text-danger row text-center"></div>*@
+                        <div class="row mb-3 mt-2">
+                            <div class="col text-center">
+                                <button class="btn btn-primary btn-lg" type="submit" id="btn-enviar">ACESSAR</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <i class="bi bi-key-fill fs-4 material-symbols-outlined">lock</i>
-                    </span>
-                    <input asp-for="Input.Password" autocomplete="off" aria-required="true" placeholder="Senha" class="form-control form-control-lg border-start-0" />
-                    <input asp-for="ReturnUrl" value="/" class="form-check-input" hidden />
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-6 col-sm-12 my-md-0 my-3 text-md-start text-center">
-                    <div class="form-check">
-                        <input asp-for="Input.RememberMe" type="checkbox" class="form-check-input" checked />
-                        <label class="form-check-label">
-                            Continuar Conectado
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12 text-md-end text-center">
-                    <a class="text-primary" asp-page="/Account/ForgotPassword">Esqueci minha senha!</a>
-                </div>
-            </div>
-            @*@if (authenticationFailed == true)
-            {
-            <div class="row mb-2">
-            <div class="col text-center text-danger">
-            Credenciais Inválidas!
-            </div>
-            </div>
-            }*@
-            @*<div asp-validation-summary="ModelOnly" class="text-danger row text-center"></div>*@
-            <div class="row mb-3 mt-2">
-                <div class="col text-center">
-                    <button class="btn btn-primary btn-lg" type="submit" id="btn-enviar">ACESSAR</button>
-                </div>
-            </div>
-        </form>
+        </div>
+
+
+
     </div>
-    
-
-
-</div>
+</section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
