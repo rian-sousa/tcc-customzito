@@ -5,6 +5,7 @@
     src: url('/support/fonts/GochiHand-Regular.ttf') format('truetype'); 
 }
 
+
 body {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 20px;
@@ -30,9 +31,10 @@ body {
     font-size: 24px;
 }
 
+/*Navbar*/
 .navbar {
     color: black;
-    background-color: white; 
+    background-color: white;
     height: 100px;
     margin: 20px;
     border-radius: 16px;
@@ -65,7 +67,6 @@ body {
     border-radius: 16px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-
 }
 
 .search-input {
@@ -76,10 +77,10 @@ body {
     margin-right: -10px;
 }
 
-.search-input:focus{
-    outline: none;
-    border-color: black;
-}
+    .search-input:focus {
+        outline: none;
+        border-color: black;
+    }
 
 @media (min-width: 991px) {
     .nav-link::before {
@@ -101,6 +102,23 @@ body {
     }
 }
 
+
+/*Sobre nós*/
+.social-icons {
+    font-size: 3rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.social-icons a {
+        margin-right: 1rem;
+        color: #000; /* Cor preta */
+        text-decoration: none; /* Sem sublinhado */
+        display: inline-block;
+
+}
+
+/*Banners e Cards da página inicial*/
 .banner-1 {
     width: 100%;
     height: auto;
