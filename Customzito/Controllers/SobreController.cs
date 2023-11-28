@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Customzito.Controllers
 {
-    [AllowAnonymous]
+    //[AllowAnonymous]
     public class SobreController : Controller
     {
         public IActionResult Index()

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Customzito.Controllers
 {
@@ -279,17 +280,21 @@ namespace Customzito.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditarRoupa(int idProduto,string DescricaoRoupa, string Titulo, float preco, int IdTipoVestimenta, int IdColecao, decimal? avaliacao, int qtd, string? cor, string? IdMaterial, string Marca)
+        public async Task<IActionResult> EditarRoupa(int IdProduto, string DescricaoRoupa, string Titulo, string preco, int IdTipoVestimenta, int IdColecao, decimal? Avaliacao, int qtd, string? cor, string? IdMaterial, string Marca)
         {
             var ObjProduto = await _czContext.TbProduto
-                .FirstOrDefaultAsync(x => x.IdProduto == idProduto);
+                .FirstOrDefaultAsync(x => x.IdProduto == IdProduto);
+
+            string PrecoFormatado = Regex.Replace(preco, @"[^\d.,]", "");
+            PrecoFormatado = PrecoFormatado.Replace(",", ".");
+
 
             ObjProduto.Titulo = Titulo;
-            ObjProduto.Preco = preco;
+            ObjProduto.Preco = float.Parse(PrecoFormatado);
             ObjProduto.Descricao = DescricaoRoupa;
             ObjProduto.IdTipoVestimenta = IdTipoVestimenta;
             ObjProduto.IdColecao = IdColecao;
-            ObjProduto.Avaliacao = avaliacao;
+            ObjProduto.Avaliacao = Avaliacao;
             ObjProduto.qtd = qtd;
             ObjProduto.Marca = Marca;
             ObjProduto.Cor = cor;

@@ -35,7 +35,7 @@ function RecuperarRoupasColecao(idColecao) {
 }
 
 function MascaraValor(input) {
-    $('#preco').inputmask('R$ 999,99 ', { placeholder: 'R$ ___,__' });
+    $('#preco').inputmask('R$ 999,99', { placeholder: 'R$ ___,__' });
 }
 
 function RemoverColecao(idColecao) {
@@ -217,13 +217,11 @@ function EditarRoupa() {
     let IdColecao = $('#IdColecao').val();
     let Marca = $('#Marca').val();
     let imagem = $('#imagem').val();
-    let idProduto = $('#idProduto').val();
+    let idProduto = $('#IdProduto').val();
+    let avaliacao = $('#Avaliacao').val();
 
     $.ajax({
-        url: `EditarRoupa/` + '?idProduto' + idProduto + '&DescricaoRoupa=' + DescricaoRoupa + '&Titulo=' + Titulo
-            + '&preco=' + preco + '&IdTipoVestimenta=' + IdTipoVestimenta + '&qtd=' + qtd
-            + '&IdMaterial=' + IdMaterial + '&IdColecao=' + IdColecao + '&Marca=' + Marca
-            + '&imagem=' + imagem ,
+        url: `EditarRoupa/?IdProduto=${idProduto}&DescricaoRoupa=${DescricaoRoupa}&Titulo=${Titulo}&preco=${preco}&IdTipoVestimenta=${IdTipoVestimenta}&qtd=${qtd}&IdMaterial=${IdMaterial}&IdColecao=${IdColecao}&Marca=${Marca}&imagem=${imagem}&Avaliacao=${avaliacao}`,
         type: 'POST',
         success: function (data) {
             $('#EditarRoupaPartial').empty()
@@ -380,13 +378,6 @@ function gerarGraficoVendasTipos(collections, products) {
                         }
                     }
                 },
-                title: {
-                    display: true,
-                    text: 'Vendas por Coleção',
-                    font: {
-                        size: 20
-                    }
-                }
             },
             scales: {
                 y: {
@@ -431,13 +422,6 @@ function gerarGraficoVendasTipos(collections, products) {
                         }
                     }
                 },
-                title: {
-                    display: true,
-                    text: 'Vendas por Produto',
-                    font: {
-                        size: 20
-                    }
-                }
             },
             scales: {
                 y: {

@@ -22,7 +22,7 @@
                     </label>
                 </div>
                 <div class="col align-content-center">
-                    <input type="text" id="DescricaoRoupa" class="form-control" value="@Model.Descricao" placeholder="Ex: A lendaria broca tag" />
+                    <input type="text" id="DescricaoRoupa" class="form-control" value="@Model.Descricao" placeholder="Ex: A lendaria broca tag" name="DescricaoRoupa" />
                 </div>
             </div>
             <div class="row mt-2">
@@ -32,7 +32,7 @@
                     </label>
                 </div>
                 <div class="col align-content-center">
-                    <input type="text" id="Titulo" class="form-control" placeholder="Ex: Broca Tag" value="@Model.Titulo" />
+                    <input type="text" id="Titulo" class="form-control" placeholder="Ex: Broca Tag" value="@Model.Titulo" name="Titulo" />
                 </div>
             </div>
             <div class="row mt-2">
@@ -42,7 +42,7 @@
                     </label>
                 </div>
                 <div class="col align-content-center">
-                    <input type="text" id="preco" class="form-control" oninput="MascaraValor(this)" value="@Model.Preco" placeholder="Ex: R$ 500,00" />
+                    <input type="text" id="preco" class="form-control" onkeyup="MascaraValor(this)" value="@Model.Preco" placeholder="Ex: R$ 500,00" name="preco" />
                 </div>
             </div>
             <div class="row mt-2">
@@ -52,7 +52,7 @@
                     </label>
                 </div>
                 <div class="col align-content-center">
-                    @Html.DropDownList("IdTipoVestimenta", ViewBag.TipoDrop, $"{Model.IdTipoVestimenta}", new{ @class="form-select", @id="IdTipoVestimenta"})
+                    @Html.DropDownList("IdTipoVestimenta", ViewBag.TipoDrop, $"{Model.IdTipoVestimenta}", new{ @class="form-select", @id="IdTipoVestimenta", @name="IdTipoVestimenta"})
                 </div>
             </div>
             <div class="row mt-2">
@@ -62,7 +62,7 @@
                     </label>
                 </div>
                 <div class="col align-content-center">
-                    <input type="number" id="qtd" value="0" min="0" step="1" class="form-control" value="@Model.qtd" placeholder="Ex: 1421" />
+                    <input type="number" id="qtd" value="@Model.qtd" min="0" step="1" class="form-control" placeholder="Ex: 1421" name="qtd" />
                 </div>
             </div>
             @*<div class="row mt-2">
@@ -82,7 +82,7 @@
                     </label>
                 </div>
                 <div class="col align-content-center">
-                    @Html.DropDownList("IdMaterial", ViewBag.MaterialDrop , $"{Model.Material}", new{ @class="form-select", @id="IdMaterial"})
+                    @Html.DropDownList("IdMaterial", ViewBag.MaterialDrop , $"{Model.Material}", new{ @class="form-select", @id="IdMaterial", @name="IdMaterial"})
                 </div>
             </div>
             <div class="row mt-2">
@@ -92,7 +92,7 @@
                     </label>
                 </div>
                 <div class="col align-content-center">
-                    @Html.DropDownList("IdColecao", ViewBag.ColecoesDrop, $"{Model.IdColecao}", new { @class="form-select", @id="IdColecao"})
+                    @Html.DropDownList("IdColecao", ViewBag.ColecoesDrop, $"{Model.IdColecao}", new { @class="form-select", @id="IdColecao", @name="IdColecao"})
                 </div>
             </div>
             <div class="row mt-2">
@@ -102,10 +102,12 @@
                     </label>
                 </div>
                 <div class="col align-content-center">
-                    <input type="text" id="Marca" class="form-control" placeholder="Ex: FERNDVM CLOTHING" value="@Model.Marca" />
-                    <input type="number" id="idProduto" value="@Model.IdProduto" hidden />
+                    <input type="text" id="Marca" class="form-control" placeholder="Ex: FERNDVM CLOTHING" value="@Model.Marca" name="Marca" />
+                    <input type="number" id="IdProduto" value="@Model.IdProduto" name="IdProduto" hidden />
+                    <input type="number" id="Avaliacao" value="@Model.Avaliacao" name="Avaliacao" hidden />
                 </div>
             </div>
+
             @*<div class="row mt-2">
                 <div class="col align-content-center">
                     <label for="Imagem" class="form-label">
