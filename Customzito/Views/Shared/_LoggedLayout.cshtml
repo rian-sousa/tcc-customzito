@@ -57,17 +57,10 @@
                             <li class="nav-item fs-3">
                                 @*<a class="nav-link active" aria-current="page" href="@Url.Action("Index","Interno")">Funções Internas</a>*@
                             </li>
-                            <li>
-                                <a class="nav-link" href="@Url.Action("ControleEstoque","Interno")">Controle de Estoque</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="@Url.Action("PedidosCustomizados","Interno")">Pedidos Customizados</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="@Url.Action("Index","Home")">Home</a>
-                            </li>
                             <li class="dropdown">
-                                <a class="nav-link dropwdown-toggle" href="#" role="button" aria-expanded="false" data-bs-toggle="dropdown">Olá! @UsuarioLogado</a>
+                                <a class="nav-link dropwdown-toggle material-symbols-outlined" href="#" role="button" aria-expanded="false" data-bs-toggle="dropdown">
+                                    menu
+                                </a>
                                 <ul class="dropdown dropdown-menu dropdown-menu-dark">
                                     <li>
                                         <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout">Sair da Conta</a>
@@ -77,6 +70,26 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index","Produtos")">
+                                    Lista de Produtos
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="@Url.Action("Index","Collections")">
+                                    Coleções
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="@Url.Action("ControleEstoque","Interno")">Controle de Estoque</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="@Url.Action("PedidosCustomizados","Interno")">Pedidos Customizados</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="@Url.Action("Index","Home")">Home</a>
+                            </li>
+                            
                         </ul>
                     </div>
                 </div>
