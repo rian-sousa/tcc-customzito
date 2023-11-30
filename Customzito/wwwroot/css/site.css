@@ -63,26 +63,6 @@ body {
     color: black;
 }
 
-.botao-pesquisa {
-    margin-left: -10px;
-    border-radius: 16px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.search-input {
-    border: 1px solid;
-    border-radius: 16px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    margin-right: -10px;
-}
-
-    .search-input:focus {
-        outline: none;
-        border-color: black;
-    }
-
 @media (min-width: 991px) {
     .nav-link::before {
         content: "";
