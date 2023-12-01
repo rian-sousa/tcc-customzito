@@ -104,10 +104,6 @@ namespace Customzito.Areas.Identity.Pages.Account
                     var roles = await _userManager.GetRolesAsync(user);
 
                     HttpContext.Session.SetString("UserRole", roles.FirstOrDefault() ?? "DefaultRole");
-                    //HttpContext.Session.
-
-                    
-
 
                     if (roles.Contains("Administrador"))
                     {
@@ -116,8 +112,16 @@ namespace Customzito.Areas.Identity.Pages.Account
                     }
                     else
                     {
+
+
+                        var PerfilUsuario = await _czContext.TbPerfil
+                            .FirstOrDefaultAsync(x => x.IdPerfil == user.IdPerfil);
+
+                        HttpContext.Session.SetInt32("IdPerfil", PerfilUsuario.IdPerfil);
+
                         returnUrl ??= Url.Content("~/Home/Index");
                         return RedirectToAction("Index", "Home");
+
                     }
 
                 }
