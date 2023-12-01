@@ -28,14 +28,14 @@ namespace Customzito.Areas.Identity.Pages.Account
         private readonly SignInManager<AspNetUsers> _signInManager;
         private UserManager<AspNetUsers> _userManager;
         private readonly ILogger<RegisterModel> _logger;
-        //private readonly IEmailSender _emailSender;
+     //   private readonly IEmailSender _emailSender;
         private CZContext _czContext;
 
         public RegisterModel(
             UserManager<AspNetUsers> userManager,
             SignInManager<AspNetUsers> signInManager,
             ILogger<RegisterModel> logger,
-            //IEmailSender emailSender,
+    //        IEmailSender emailSender,
             CZContext context
             )
         {
@@ -111,10 +111,27 @@ namespace Customzito.Areas.Identity.Pages.Account
 
                 await _czContext.SaveChangesAsync();
 
+                var PerfilCriado = _czContext.TbPerfil
+                    .FirstOrDefaultAsync(x => x.Sobrenome == "Sobrenome" && x.IdEndereco == EnderecoRegistrado.IdEndereco);
+
+                Random random = new Random();
+
+                int idUsuario = random.Next();
+
+                TB_Carrinho carrinho = new()
+                {
+                    IdPerfil = PerfilCriado.Result.IdPerfil,
+                    //IdCarrinho = idkrrinho
+                };
+
+                await _czContext.TbCarrinho.AddAsync(carrinho);
+
+                await _czContext.SaveChangesAsync();
+
                 var perfilRegistrado = await _czContext.TbPerfil
                     .FirstOrDefaultAsync(x => x.Nome == username);
 
-                var user = new AspNetUsers { UserName = username, Email = Input.Email, IdPerfil = perfilRegistrado.IdPerfil };                               
+                var user = new AspNetUsers {Id = Guid.NewGuid().ToString(), UserName = username, Email = Input.Email, IdPerfil = perfilRegistrado.IdPerfil};                               
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 

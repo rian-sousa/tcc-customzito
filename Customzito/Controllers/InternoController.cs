@@ -68,8 +68,6 @@ namespace Customzito.Controllers
                                      join STS in Stats on Produto.IdProduto equals STS.IdStatus
                                      select new PedidoCompletoModel
                                      {
-                                         Protocolo = Carrinho.Protocolo,
-                                         ValorTotal = Carrinho.ValorTotal,
                                          //Email = Usuario.Email,
                                          TipoPedido = (Produto.IdPedidoCustomizado != null) ? "CUSTOMIZADO" : "FÁBRICA",
                                          Status = STS.DescricaoInterna,
