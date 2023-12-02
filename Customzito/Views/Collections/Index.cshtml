@@ -24,44 +24,30 @@
     </div>
 </div>*@
 
-<div class="p-5 text-center " style="
-    background-image: url('/images/fundo-collections-verdin-transformed.png');
-    background-repeat: no-repeat;
-    background-position-x: 50%;
-    background-position-y: 99%;
-    background-size: 90% 900px;
-    height: 500px;
-  ">
-    <div class="mask mt-5 rounded-1" style="background-color: hsla(0, 0%, 0%, 1);">
-        <div class="d-flex justify-content-center align-items-center">
-            <div class="text-white">
-                <h1 class="mt-5 mb-3 colecoes-text-titulo text-size-lg"><b>CUSTOMZITO COLLECTIONS</b></h1>
-                <h4 class="mb-5 colecoes-text">na customização, nós quebramos a banca e deixamos sua quebrada no estilo! Vem pra Customzito Collections, o bonde tá só começando.</h4>
-            </div>
+<section>
+    <a><img src="~/images/collections.svg" style="width: 100%; height: auto"/></a>
+
+    <div class="container w-50 my-md-3 ps-md-3 text-center ">
+        <div class="row align-items-center">
+            @foreach (var item in ViewBag.Colecoes)
+            {
+                <div class="bg-dark me-md-3 pt-3  text-center text-white overflow-hidden rounded-1 mb-5 ">
+                    <a href="/Produtos/Colecoes/@item.IdColecao" style="text-decoration: none; color:white">
+                        <div class="my-3 py-3">
+                            <h2 class="display-5 colecoes-text-card ">@item.Descricao</h2>
+                            @if (item.Limitado == true)
+                            {
+                                <p class="lead text-warning colecoes-text-limitado">EDIÇÃO LIMITADA!</p>
+                            }
+
+                        </div>
+                    </a>
+                </div>
+            }
         </div>
+
+
+
     </div>
-</div>
-
-<div class="container w-50 my-md-3 ps-md-3 text-center">
-    <div class="row align-items-center">
-        @foreach (var item in ViewBag.Colecoes)
-        {
-            <div class="bg-dark me-md-3 pt-3  text-center text-white overflow-hidden rounded-1 mb-5 ">
-                <a href="/Produtos/Colecoes/@item.IdColecao" style="text-decoration: none; color:white">
-                    <div class="my-3 py-3">
-                        <h2 class="display-5 colecoes-text-card ">@item.Descricao</h2>
-                        @if (item.Limitado == true)
-                        {
-                            <p class="lead text-warning colecoes-text-limitado">EDIÇÃO LIMITADA!</p>
-                        }
-
-                    </div>
-                </a>
-            </div>
-        }
-    </div>
-
-    
-
-</div>
+</section>
 
