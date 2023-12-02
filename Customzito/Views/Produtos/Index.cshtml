@@ -11,10 +11,11 @@
     {
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
+
 }
 
 
-<div class="p-5 text-center " style="
+<div class="p-5 text-center mt-5  " style="
     background-image: url('/images/fundo-collections-verdin-transformed.png');
     background-repeat: no-repeat;
     background-position-x: 50%;
@@ -52,6 +53,13 @@
             </div>
         }
     </div>
-    
-
 </div>
+
+
+@section Scripts {
+    <script src="~/js/script.js"></script>
+
+    <script type="text/javascript">
+        formatarValores();
+    </script>
+}

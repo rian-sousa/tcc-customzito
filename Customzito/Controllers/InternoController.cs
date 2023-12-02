@@ -208,8 +208,12 @@ namespace Customzito.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AdicionarRoupa(string DescricaoRoupa, string Titulo, float preco, int IdTipoVestimenta, int IdColecao, decimal? avaliacao, int qtd, string? cor, string IdMaterial, string Marca, IFormFile? imagem)
+        public async Task<IActionResult> AdicionarRoupa(string DescricaoRoupa, string Titulo, string preco, int IdTipoVestimenta, int IdColecao, decimal? avaliacao, int qtd, string? cor, string IdMaterial, string Marca, IFormFile? imagem)
         {
+
+            string PrecoFormatado = Regex.Replace(preco, @"[^\d.,]", "");
+            PrecoFormatado = PrecoFormatado.Replace(",", ".");
+
             if (imagem is not null)
             {
                 var CaminhoArquivo = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", imagem.FileName);
@@ -223,7 +227,7 @@ namespace Customzito.Controllers
                 {
                     Descricao = DescricaoRoupa,
                     Titulo = Titulo,
-                    Preco = preco,
+                    Preco = float.Parse(PrecoFormatado),
                     IdTipoVestimenta = IdTipoVestimenta,
                     IdColecao = IdColecao,
                     Avaliacao = avaliacao,
@@ -246,7 +250,7 @@ namespace Customzito.Controllers
                 {
                     Descricao = DescricaoRoupa,
                     Titulo = Titulo,
-                    Preco = preco,
+                    Preco = float.Parse(PrecoFormatado),
                     IdTipoVestimenta = IdTipoVestimenta,
                     IdColecao = IdColecao,
                     Avaliacao = avaliacao,

@@ -58,6 +58,10 @@
     {
             { "Coleção A", 35000.21m },
             { "Coleção B", 52028.42m },
+            { "Coleção C", 32028.42m },
+            { "Coleção D", 62028.42m },
+            { "Coleção E", 22028.42m },
+            { "Coleção F", 12028.42m },
             // Adicione mais coleções conforme necessário
     };
 
@@ -65,9 +69,28 @@
 
     Dictionary<string, decimal> produtos = new Dictionary<string, decimal>
     {
-            { "Produto X", 45420.32m },
-            { "Produto Y", 62048.98m },
-            // Adicione mais produtos conforme necessário
+            { "Adidas", 5021.00m },
+            { "Branca Lisa", 1508.99m },
+            { "Camuflada", 2798.50m },
+            { "Denim", 3553.80m },
+            { "Esportiva", 4076.99m },
+            { "Floral", 2212.75m },
+            { "Gola Alta", 1853.50m },
+            { "Havaiana", 1245.75m },
+            { "Listrada", 2125.25m },
+            { "Manga Longa", 2515.00m },
+            { "Nike", 5595.00m },
+            { "Oxford", 9230.00m },
+            { "Polo", 8733.50m },
+            { "Quadriculada", 1219.99m },
+            { "Regata", 1250.20m },
+            { "Social", 4415.00m },
+            { "Tommy Hilfiger", 2460.00m },
+            { "Uniforme EX-Colar", 2418.75m },
+            { "Vermelha", 1423.50m },
+            { "Xadrez", 2233.99m },
+            { "Yves Saint Laurent", 7225.00m },
+            { "Zíper Frontal", 2812.50m }
     };
 
     var arrayProdutos = produtos.Select(kv => new object[] { kv.Key, kv.Value }).ToArray();
@@ -158,7 +181,7 @@
                         {
                             <tr>
                                 <td scope="row">
-                                    @produto.Descricao
+                                    @produto.Titulo
                                 </td>
                                 <td>
                                     @produto.qtd

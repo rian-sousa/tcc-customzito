@@ -26,7 +26,6 @@ namespace Customzito.Controllers
 
             TempData["Layout"] = layout;
 
-
             ViewBag.Colecoes = Colecoes;
 
             return View();
