@@ -49,14 +49,14 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link mx-lg-2 active" aria-current="page" href="@Url.Action("Index","Home")">Início</a>
+                                    <a class="nav-link mx-lg-2" aria-current="page" href="@Url.Action("Index","Home")">Início</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link mx-lg-2" href="@Url.Action("Index","Produtos")">Produtos</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link mx-lg-2" href="@Url.Action("Index","Collections")">Coleções</a>
-                                </li>
+                                </li >
                                 <li>
                                     <a class="nav-link mx-lg-2" asp-area="Identity" asp-page="/Account/Login">Logar</a>
 
@@ -87,6 +87,8 @@
 
     <!-- jQuery -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   
+
 
     <!-- Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -96,6 +98,9 @@
 
     <!-- Fabric Js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+
+
+
 
 
     @await RenderSectionAsync("Scripts", required: false)

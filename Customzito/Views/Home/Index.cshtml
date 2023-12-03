@@ -24,7 +24,7 @@
         <h1 class="text-center mb-5">MAIS VENDIDOS</h1>
 
         <div class="carousel slide" data-bs-ride="carousel" id="indicadorCarosel">
-            <div class="carousel-inner">
+            <div class="carousel-inner d-flex align-items-center">
                 <!-- Slide  -->
                 @foreach (var Produto in TopProdutos)
                 {
@@ -34,12 +34,12 @@
                     {
                         <div class="carousel-item active">
                             <div class="d-flex justify-content-center">
-                                <div class="card me-3">
-                                    <img src="@Produto.UrlImagem" class="card-img-top img-fluid" alt="Produto 1">
+                                <div class="card me-3 d-flex align-items-center">
+                                    <img src="~/images/model-cz.png" class="card-img-top img-fluid" alt="Produto 1">
                                     <div class="card-body">
                                         <h5 class="card-title">@Produto.Titulo</h5>
                                         <p class="card-text">@Produto.Descricao</p>
-                                        <a href="#" class="btn btn-primary">Comprar</a>
+                                        <a href="#" class="btn btn-dark">Comprar</a>
                                     </div>
                                 </div>
                             </div>
@@ -49,20 +49,18 @@
                     {
                         <div class="carousel-item">
                             <div class="d-flex justify-content-center">
-                                <div class="card me-3">
-                                    <img src="@Produto.UrlImagem" class="card-img-top img-fluid" alt="Produto 1">
+                                <div class="card me-3 d-flex align-items-center">
+                                    <img src="~/images/model-cz.png" class="card-img-top img-fluid" alt="Produto 1">
                                     <div class="card-body">
                                         <h5 class="card-title">@Produto.Titulo</h5>
                                         <p class="card-text">@Produto.Descricao</p>
-                                        <a href="#" class="btn btn-primary">Comprar</a>
+                                        <a href="#" class="btn btn-dark">Comprar</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     }
                 }
-                <!-- Repita a estrutura acima para os Slides 2, 3, 4, 5, 6 -->
-
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#indicadorCarosel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
