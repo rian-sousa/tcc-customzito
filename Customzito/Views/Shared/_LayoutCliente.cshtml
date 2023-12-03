@@ -3,6 +3,8 @@
 *@
 @{
     var Perfil = ViewBag.PerfilCliente;
+    var Endereco = ViewBag.EnderecoCliente;
+    var Carrinho = ViewBag.CarrinhoCliente;
 
 }
 
@@ -60,10 +62,10 @@
                                     <li>
                                         <a class="dropdown-item text-white" asp-area="Identity" asp-page="/Account/Logout">Sair da Conta</a>
                                     </li>
-                                    @if(Perfil is not null)
+                                    @if (Perfil is not null)
                                     {
                                         <li>
-                                            <a class="dropdown-item" asp-action="Index" asp-controller="ConfigPerfil" asp-route-id="@Perfil.IdPerfil">Configurações</a>
+                                            <a class="dropdown-item text-white" asp-action="Index" asp-controller="ConfigPerfil" asp-route-id="@Perfil.IdPerfil">Configurações</a>
                                         </li>
                                     }
 
@@ -88,7 +90,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index","Carrinho")">
+                                <a class="nav-link" href="@Url.Action("Index","Carrinho", new {@id = Carrinho.IdCarrinho})">
                                     Carrinho
                                 </a>
                             </li>
@@ -125,7 +127,6 @@
 
     <!-- Fabric Js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
-
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

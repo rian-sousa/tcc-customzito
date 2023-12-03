@@ -7,6 +7,7 @@ using CustomBancoLib;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Customzito.Models.Auxiliares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,8 @@ builder.Services.AddMvc().AddRazorOptions(options =>
     options.ViewLocationFormats.Add("/Views/{1}/{0}.cshtml");
     options.ViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
 });
+
+builder.Services.AddScoped<CarrinhoModel>();
 
 builder.Services.Configure<IdentityOptions>(options =>
 {

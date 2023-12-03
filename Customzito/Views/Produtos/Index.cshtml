@@ -15,18 +15,18 @@
 }
 
 
-<section style="margin-top: 110px">
-    <img src="~/images/produtos.svg" class="img-fluid mb-5" style="width: 100%" />
+<section style="margin-top: 110px" class="text-center">
+    <img src="~/images/produtos.svg" class="img-fluid mb-5 w-75" />
 </section>
 
 <div class="container overflow-hidden">
-    <div class="row row-cols-2 row-cols-md-3 g-4 justify-content-center">
+    <div class="row row-cols-3 row-cols-md-3 g-4 justify-content-center">
         @foreach (var item in ViewBag.Produtos)
         {
-            <div class="card mb-3 me-3 col-5">
+            <div class="card mb-3 me-3 col">
                 <div class="card-body d-flex justify-content-center">
                     <a href="@Url.Action("Item","Produtos", new { id = item.IdProduto})" class="no-underline">
-                        <img src="~/images/model-cz.png" class=" card-img-top img-fluid" />
+                        
                         <div class=" mt-4 text-center overflow-hidden rounded-3">
                             <div class="my-3 py-3">
                                 <h2 class="display-5 produtos-text-titulo">@item.Titulo</h2>
@@ -34,7 +34,18 @@
                                     @item.Descricao <br />
                                     @*<img style="width: 100px; height: 100px;" src="https://www.shutterstock.com/shutterstock/photos/2162642505/display_1500/stock-photo-bear-trap-isolated-on-white-background-metal-trap-addiction-hunting-poaching-credit-mortgage-2162642505.jpg" />*@
                                 </p>
-                                <label class="text-warning produtos-text-preco">R$@item.Preco</label>  @*Aplicar máscara de valores*@
+
+                                <img src="~/images/model-cz.png" class=" card-img-top img-fluid" />
+                                <label id="precoProduto" class="text-dark produtos-text-preco my-3">@item.Preco</label>
+
+                                <div class="d-flex text-center justify-content-center">
+                                    <button class="btn btn-lg btn-success d-flex mx-1">Comprar!</button>
+                                    <button class="btn btn-lg btn-success d-flex material-symbols-outlined align-text-center" data-bs-placement="bottom" data-tt="tooltip"
+                                            title="Adicionar ao carrinho!">
+                                        add_shopping_cart
+                                    </button>
+                                </div>
+                                
                             </div>
                         </div>
                     </a>

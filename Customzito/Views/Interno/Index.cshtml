@@ -3,97 +3,198 @@
 *@
 @{
     Layout = "~/Views/Shared/_LoggedLayout.cshtml";
+
+    Random aleatorio = new Random();
+
+    int nAleatorio()
+    {
+        return aleatorio.Next(000000,999999);
+    };
 }
 
 <div class="container mt-5">
-    <div class="row">
-        <h3>PAINEL DE GESTÃO INTERNA</h3>
-    </div>
+    <div>
+        <div class="row fs-3 text-center my-5">
+            <div class="fs-1">
+                PAINEL DE GESTÃO INTERNA
+            </div>
+        </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="header">
-                    <h2>TASK INFOS</h2>
-
-                </div>
-                <div class="body">
-                    <div class="table-responsive">
-                        <table class="table table-hover dashboard-task-infos">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Task</th>
-                                    <th>Status</th>
-                                    <th>Manager</th>
-                                    <th>Progress</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Task A</td>
-                                    <td><span class="label bg-green">Doing</span></td>
-                                    <td>John Doe</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Task B</td>
-                                    <td><span class="label bg-blue">To Do</span></td>
-                                    <td>John Doe</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Task C</td>
-                                    <td><span class="label bg-light-blue">On Hold</span></td>
-                                    <td>John Doe</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-light-blue" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Task D</td>
-                                    <td><span class="label bg-orange">Wait Approvel</span></td>
-                                    <td>John Doe</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Task E</td>
-                                    <td>
-                                        <span class="label bg-red">Suspended</span>
-                                    </td>
-                                    <td>John Doe</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-red" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+        <div class="row text-center" style="max-height: 400px; overflow-y: auto;">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-title my-2">
+                        <h2>Gestão de tarefas</h2>
                     </div>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="table-responsive border">
+                                <table class="table table-hover dashboard-task-infos">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Tarefa</th>
+                                            <th>Status</th>
+                                            <th>Responsável</th>
+                                            <th>Progresso</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>@nAleatorio()</td>
+                                            <td>Validar Imagens dos Produtos</td>
+                                            <td><span class="label bg-green">Em Progresso</span></td>
+                                            <td>João Dantas</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>@nAleatorio()</td>
+                                            <td>Criar API de comunicação com o VestidoBank</td>
+                                            <td><span class="label bg-blue">A Fazer</span></td>
+                                            <td>Rian Sousa</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>@nAleatorio()</td>
+                                            <td>Consultar Populares - Pesquisa de Vendas</td>
+                                            <td><span class="label bg-light-blue">Paralisado</span></td>
+                                            <td>Carlos Máximo</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-light-blue" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>@nAleatorio()</td>
+                                            <td>Redistribuir Produtos - Depósito</td>
+                                            <td><span class="label bg-orange">Aguardando Apr. Doc.</span></td>
+                                            <td>Manoel Tsetung</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>@nAleatorio()</td>
+                                            <td>Reunião com Fabricante</td>
+                                            <td>
+                                                <span class="label bg-red">Cancelado</span>
+                                            </td>
+                                            <td>Samuel Lima</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-red" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>@nAleatorio()</td>
+                                            <td>Treinamento de Equipe</td>
+                                            <td>
+                                                <span class="label bg-green">Concluído</span>
+                                            </td>
+                                            <td>Maria Silva</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>@nAleatorio()</td>
+                                            <td>Entrega de Projeto de Expansão - Fáb. Filia #02</td>
+                                            <td>
+                                                <span class="label bg-blue">Em andamento</span>
+                                            </td>
+                                            <td>Carlos Oliveira</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>@nAleatorio()</td>
+                                            <td>Apresentação de Resultados (Trimestre)</td>
+                                            <td>
+                                                <span class="label bg-yellow">Pendente</span>
+                                            </td>
+                                            <td>Ana Santos</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>@nAleatorio()</td>
+                                            <td>Criação de novas estampadas</td>
+                                            <td>
+                                                <span class="label bg-orange">Atrasado</span>
+                                            </td>
+                                            <td>Rodrigo Oliveira</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Atividade 5 -->
+                                        <tr>
+                                            <td>@nAleatorio()</td>
+                                            <td>Entrevista de Emprego</td>
+                                            <td>
+                                                <span class="label bg-purple">Agendado</span>
+                                            </td>
+                                            <td>Fernanda Lima</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="d-flex d-inline-flex" >
+                <button class="btn btn-lg btn-success d-flex mx-1 material-symbols-outlined" data-bs-placement="bottom" data-tt="tooltip"
+                        title="Adicionar Usuário">
+                    add_circle
+                </button>
+                <button class="btn btn-lg btn-success d-flex mx-1 material-symbols-outlined" data-bs-placement="bottom" data-tt="tooltip"
+                        title="Delegar Tarefa">
+                    add_task
+                </button>
+                <button class="btn btn-lg btn-success d-flex mx-1 material-symbols-outlined" data-bs-placement="bottom" data-tt="tooltip"
+                        title="Enviar E-mail">
+                    mail
+                </button>
             </div>
         </div>
     </div>
     
    
 </div>
+
+@section Scripts {
+    <script src="~/js/script.js"></script>
+
+}

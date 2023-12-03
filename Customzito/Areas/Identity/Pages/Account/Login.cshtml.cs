@@ -1,10 +1,12 @@
 ﻿using CustomBancoLib;
+using Customzito.Services.CZDatabase;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,14 +21,17 @@ namespace Customzito.Areas.Identity.Pages.Account
         private readonly UserManager<AspNetUsers> _userManager;
         private readonly SignInManager<AspNetUsers> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly CZContext _czContext;
 
         public LoginModel(SignInManager<AspNetUsers> signInManager,
             ILogger<LoginModel> logger,
-            UserManager<AspNetUsers> userManager)
+            UserManager<AspNetUsers> userManager,
+            CZContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _czContext = context;
         }
 
         [BindProperty]
@@ -100,9 +105,6 @@ namespace Customzito.Areas.Identity.Pages.Account
 
                     HttpContext.Session.SetString("UserRole", roles.FirstOrDefault() ?? "DefaultRole");
 
-                    //TempData["AspUsuario"] = user.UserName;
-                    //TempData.Keep("AspUsuario");
-
                     if (roles.Contains("Administrador"))
                     {
                         returnUrl ??= Url.Content("~/Interno/Index");
@@ -110,8 +112,16 @@ namespace Customzito.Areas.Identity.Pages.Account
                     }
                     else
                     {
+
+
+                        var PerfilUsuario = await _czContext.TbPerfil
+                            .FirstOrDefaultAsync(x => x.IdPerfil == user.IdPerfil);
+
+                        HttpContext.Session.SetInt32("IdPerfil", PerfilUsuario.IdPerfil);
+
                         returnUrl ??= Url.Content("~/Home/Index");
                         return RedirectToAction("Index", "Home");
+
                     }
 
                 }

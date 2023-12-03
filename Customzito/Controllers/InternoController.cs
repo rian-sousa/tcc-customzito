@@ -38,9 +38,9 @@ namespace Customzito.Controllers
             string layout = userRole == "Cliente" ? "~/Views/Shared/_LayoutCliente.cshtml" : "~/Views/Shared/_LoggedLayout.cshtml";
             ViewData["Layout"] = layout;
 
-            var PedidosCompletos = await RecuperarPedidosCompletos();
+            //var PedidosCompletos = await RecuperarPedidosCompletos();
 
-            ViewBag.Pedidos = PedidosCompletos;
+            //ViewBag.Pedidos = PedidosCompletos;
 
             return View();
         }
@@ -68,8 +68,6 @@ namespace Customzito.Controllers
                                      join STS in Stats on Produto.IdProduto equals STS.IdStatus
                                      select new PedidoCompletoModel
                                      {
-                                         Protocolo = Carrinho.Protocolo,
-                                         ValorTotal = Carrinho.ValorTotal,
                                          //Email = Usuario.Email,
                                          TipoPedido = (Produto.IdPedidoCustomizado != null) ? "CUSTOMIZADO" : "FÁBRICA",
                                          Status = STS.DescricaoInterna,

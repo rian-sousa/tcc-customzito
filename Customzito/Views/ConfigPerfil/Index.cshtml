@@ -2,4 +2,113 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    if (TempData["Layout"] is not null)
+    {
+        Layout = TempData["Layout"] as string;
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    var Perfil = ViewBag.PerfilCliente;
+    var Endereco = ViewBag.EnderecoCliente;
+
 }
+
+<div class="container">
+    <div class="my-5 py-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title fs-2 mb-1">
+                    Informações Pessoais
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="nomeInput" class="form-label">
+                            <b>Nome</b>
+                        </label>
+                        <input type="text" class="form-control" id="nomeInput" value="@Perfil.Nome" placeholder="Ex: Rian" />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="sobrenomeInput" class="form-label">
+                            <b>Sobrenome</b>
+                        </label>
+                        <input type="text" class="form-control" id="sobrenomeInput" value="@Perfil.Sobrenome" placeholder="Ex: Sousa" />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="cpfInput" class="form-label">
+                            <b>CPF</b>
+                        </label>
+                        <input type="text" class="form-control" id="cpfInput" value="@Perfil.Cpf" placeholder="Ex: 01234567898" />
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="card-body">
+                <hr />
+                <div class="card-title fs-2">
+                    Endereço
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="quadraInput" class="form-label">
+                            <b>Quadra</b>
+                        </label>
+                        <input type="text" class="form-control" id="quadraInput" value="@Endereco.Quadra" placeholder="Ex: Q 31" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="loteInput" class="form-label">
+                            <b>Lote</b>
+                        </label>
+                        <input type="text" class="form-control" id="loteInput" value="@Endereco.Lote" placeholder="Ex: L 11" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="numCasainput" class="form-label">
+                            <b>Número</b>
+                        </label>
+                        <input type="text" class="form-control" id="numCasainput" value="@Endereco.numCasa" placeholder="Ex: 01" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-3">
+                        <label for="cidadeInput" class="form-label">
+                            <b>Cidade</b>
+                        </label>
+                        <input type="text" class="form-control" id="cidadeInput" value="@Endereco.Cidade" placeholder="Ex: Cidade de Bolas" />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="estadoInput" class="form-label">
+                            <b>Estado</b>
+                        </label>
+                        <input type="text" class="form-control" id="estadoInput" value="@Endereco.Estado" placeholder="Ex: Cidade de Bolas" />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="complementoInput" class="form-label">
+                            <b>Complemento</b>
+                        </label>
+                        <input type="text" class="form-control" id="complementoInput" value="@Endereco.Complemento" placeholder="Ex: Cidade de Bolas" />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="cepInput" class="form-label">
+                            <b>CEP</b>
+                        </label>
+                        <input type="text" class="form-control" id="cepInput" value="" placeholder="Ex: Cidade de Bolas" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-success">Confirmar Alterações</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
