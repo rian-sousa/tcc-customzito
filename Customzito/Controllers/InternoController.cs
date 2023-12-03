@@ -38,9 +38,9 @@ namespace Customzito.Controllers
             string layout = userRole == "Cliente" ? "~/Views/Shared/_LayoutCliente.cshtml" : "~/Views/Shared/_LoggedLayout.cshtml";
             ViewData["Layout"] = layout;
 
-            var PedidosCompletos = await RecuperarPedidosCompletos();
+            //var PedidosCompletos = await RecuperarPedidosCompletos();
 
-            ViewBag.Pedidos = PedidosCompletos;
+            //ViewBag.Pedidos = PedidosCompletos;
 
             return View();
         }

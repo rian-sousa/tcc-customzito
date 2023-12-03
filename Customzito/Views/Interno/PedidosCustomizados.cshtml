@@ -4,27 +4,39 @@
 @{
     Layout = "~/Views/Shared/_LoggedLayout.cshtml";
 
+    Random aleatorio = new Random();
+
+    int nAleatorio()
+    {
+        return aleatorio.Next(000000, 999999);
+    };
+
+    int nAleatorioEspecifico(int minimo, int max)
+    {
+        return aleatorio.Next(minimo, max);
+    };
+
     var lstPedidos = ViewBag.Pedidos;
 }
 
 <div class="container">
-    <div class="fs-1 text-center">BEM, VINDO! [FULANO]!</div>
+    <div class="fs-1 text-center">PEDIDOS</div>
 
     <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title fs-2 text-center">
-                        VENDAS DO DIA
+                        Últimas Vendas
                     </div>
                     <div class="card text-white bg-success mb-3" >
                         <div class="card-header text-center fs-3">CUSTOMIZADOS</div>
                         <div class="card-body d-flex">
                             <div class="col text-center">
-                                <p class="card-title">Mês: 35</p>
+                                <p class="card-title fs-1">Mês: 35</p>
                             </div>
                             <div class="col text-center">
-                                <p class="card-title">Dia: 2</p>
+                                <p class="card-title fs-1">Dia: 2</p>
                             </div>                            
                         </div>
                     </div>
@@ -32,13 +44,142 @@
                         <div class="card-header text-center fs-3">PRÉ-FABRICADOS</div>
                         <div class="card-body d-flex">
                             <div class="col text-center">
-                                <p class="card-title">Mês: 85</p>
+                                <p class="card-title fs-1">Mês: 85</p>
                                 
                             </div>
                             <div class="col text-center">
-                                <p class="card-title">Dia: 5</p>
+                                <p class="card-title fs-1">Dia: 5</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title fs-2 text-center">
+                        Customizados
+                    </div>
+                    <div class="card-body d-flex" style="max-height: 355px; overflow-y: auto;">
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Qtd. Estampa</th>
+                                    <th scope="col">Material</th>
+                                    <th scope="col">Modelo Utilizado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        @nAleatorio()
+                                    </th>
+                                    <td>@nAleatorioEspecifico(1, 50)</td>
+                                    <td>Algodão</td>
+                                    <td>Camisa Manga-longa</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        @nAleatorio()
+                                    </th>
+                                    <td>@nAleatorioEspecifico(1, 50)</td>
+                                    <td>Seda</td>
+                                    <td>Vestido de Noite</td>
+                                </tr>
+
+                                <!-- Item 2 -->
+                                <tr>
+                                    <th scope="row">
+                                        @nAleatorio()
+                                    </th>
+                                    <td>@nAleatorioEspecifico(1, 50)</td>
+                                    <td>Linho</td>
+                                    <td>Calça Jeans</td>
+                                </tr>
+
+                                <!-- Item 3 -->
+                                <tr>
+                                    <th scope="row">
+                                        @nAleatorio()
+                                    </th>
+                                    <td>@nAleatorioEspecifico(1, 50)</td>
+                                    <td>Veludo</td>
+                                    <td>Blazer</td>
+                                </tr>
+
+                                <!-- Item 4 -->
+                                <tr>
+                                    <th scope="row">
+                                        @nAleatorio()
+                                    </th>
+                                    <td>@nAleatorioEspecifico(1, 50)</td>
+                                    <td>Couro</td>
+                                    <td>Jaqueta de Couro</td>
+                                </tr>
+
+                                <!-- Item 5 -->
+                                <tr>
+                                    <th scope="row">
+                                        @nAleatorio()
+                                    </th>
+                                    <td>@nAleatorioEspecifico(1, 50)</td>
+                                    <td>Poliamida</td>
+                                    <td>Shorts Esportivo</td>
+                                </tr>
+
+                                <!-- Item 6 -->
+                                <tr>
+                                    <th scope="row">
+                                        @nAleatorio()
+                                    </th>
+                                    <td>@nAleatorioEspecifico(1, 50)</td>
+                                    <td>Cetim</td>
+                                    <td>Blusa de Alça</td>
+                                </tr>
+
+                                <!-- Item 7 -->
+                                <tr>
+                                    <th scope="row">
+                                        @nAleatorio()
+                                    </th>
+                                    <td>@nAleatorioEspecifico(1, 50)</td>
+                                    <td>Poliéster</td>
+                                    <td>Camiseta Polo</td>
+                                </tr>
+
+                                <!-- Item 8 -->
+                                <tr>
+                                    <th scope="row">
+                                        @nAleatorio()
+                                    </th>
+                                    <td>@nAleatorioEspecifico(1, 50)</td>
+                                    <td>Flanela</td>
+                                    <td>Camisa Xadrez</td>
+                                </tr>
+
+                                <!-- Item 9 -->
+                                <tr>
+                                    <th scope="row">
+                                        @nAleatorio()
+                                    </th>
+                                    <td>@nAleatorioEspecifico(1, 50)</td>
+                                    <td>Malha</td>
+                                    <td>Regata</td>
+                                </tr>
+
+                                <!-- Item 10 -->
+                                <tr>
+                                    <th scope="row">
+                                        @nAleatorio()
+                                    </th>
+                                    <td>@nAleatorioEspecifico(1, 50)</td>
+                                    <td>Jeans</td>
+                                    <td>Macacão</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -46,31 +187,152 @@
     </div>
 
     <div class="row mt-5">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Protocolo</th>
-                    <th scope="col">ID. Perfil</th>
-                    <th scope="col">ID. Carrinho</th>
-                    <th scope="col">Tipo de Pedido</th>
-                    <th scope="col">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach(var pedido in lstPedidos)
-                {
-                    <tr>
-                        <th scope="row">
-                            @pedido.Protocolo
-                        </th>
-                        <td>@pedido.ValorTotal</td>
-                        <td>@pedido.IdPerfil</td>
-                        <td>@pedido.IdCarrinho</td>
-                        <td>@pedido.TipoPedido</td>
-                        <td>@pedido.Status</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Protocolo</th>
+                            <th scope="col">Valor Total</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">ID. Carrinho</th>
+                            <th scope="col">Tipo de Pedido</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                @nAleatorio()
+                            </th>
+                            <td>R$ 544,21</td>
+                            <td>João Santos</td>
+                            <td>202312</td>
+                            <td>Fabricado/Customizado</td>
+                            <td>Avaliando Disponibilidade</td>
+                        </tr>
+                        <!-- Item 1 -->
+                        <tr>
+                            <th scope="row">
+                                @nAleatorio()
+                            </th>
+                            <td>R$ 1.544,21</td>
+                            <td>João Pedro</td>
+                            <td>202312</td>
+                            <td>Fabricado</td>
+                            <td>Avaliando Disponibilidade</td>
+                        </tr>
+
+                        <!-- Item 2 -->
+                        <tr>
+                            <th scope="row">
+                                @nAleatorio()
+                            </th>
+                            <td>R$ 789,54</td>
+                            <td>Maria Oliveira</td>
+                            <td>202313</td>
+                            <td>Customizado</td>
+                            <td>Em Processo de Entrega</td>
+                        </tr>
+
+                        <!-- Item 3 -->
+                        <tr>
+                            <th scope="row">
+                                @nAleatorio()
+                            </th>
+                            <td>R$ 321,87</td>
+                            <td>Carlos Lima</td>
+                            <td>202314</td>
+                            <td>Fabricado/Customizado</td>
+                            <td>Aguardando Pagamento</td>
+                        </tr>
+
+                        <!-- Item 4 -->
+                        <tr>
+                            <th scope="row">
+                                @nAleatorio()
+                            </th>
+                            <td>R$ 123,45</td>
+                            <td>Fernanda Oliveira</td>
+                            <td>202315</td>
+                            <td>Customizado</td>
+                            <td>Enviado com Sucesso</td>
+                        </tr>
+
+                        <!-- Item 5 -->
+                        <tr>
+                            <th scope="row">
+                                @nAleatorio()
+                            </th>
+                            <td>R$ 987,65</td>
+                            <td>Alice Lima</td>
+                            <td>202316</td>
+                            <td>Fabricado/Customizado</td>
+                            <td>Em Produção</td>
+                        </tr>
+
+                        <!-- Item 6 -->
+                        <tr>
+                            <th scope="row">
+                                @nAleatorio()
+                            </th>
+                            <td>R$ 456,78</td>
+                            <td>Roberto Santos</td>
+                            <td>202317</td>
+                            <td>Fabricado</td>
+                            <td>Aguardando Retirada</td>
+                        </tr>
+
+                        <!-- Item 7 -->
+                        <tr>
+                            <th scope="row">
+                                @nAleatorio()
+                            </th>
+                            <td>R$ 210,98</td>
+                            <td>Mariana Oliveira</td>
+                            <td>202318</td>
+                            <td>Fabricado/Customizado</td>
+                            <td>Em Análise de Qualidade</td>
+                        </tr>
+
+                        <!-- Item 8 -->
+                        <tr>
+                            <th scope="row">
+                                @nAleatorio()
+                            </th>
+                            <td>R$ 654,32</td>
+                            <td>Ricardo Lima</td>
+                            <td>202319</td>
+                            <td>Fabricado</td>
+                            <td>Em Rota de Entrega</td>
+                        </tr>
+
+                        <!-- Item 9 -->
+                        <tr>
+                            <th scope="row">
+                                @nAleatorio()
+                            </th>
+                            <td>R$ 875,43</td>
+                            <td>Larissa Santos</td>
+                            <td>202320</td>
+                            <td>Customizado</td>
+                            <td>Aguardando Montagem</td>
+                        </tr>
+
+                        <!-- Item 10 -->
+                        <tr>
+                            <th scope="row">
+                                @nAleatorio()
+                            </th>
+                            <td>R$ 333,33</td>
+                            <td>Pedro Oliveira</td>
+                            <td>202321</td>
+                            <td>Fabricado</td>
+                            <td>Em Processo de Devolução</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
