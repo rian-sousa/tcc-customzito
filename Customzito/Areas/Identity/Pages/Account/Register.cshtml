@@ -5,35 +5,37 @@
 }
 
 <section style="margin-top: 200px">
-    <div class="container justify-content-center text-center mt-5">
+    <div class="container-sm align-items-center d-flex justify-content-center text-center mt-5">
 
-        <div class="card">
-            <div class="card-body">
-                <i class="fas fa-user-circle text-center mb-3" style="letter-spacing: 5px; font-size: 60px;"></i>
-                <h1>Crie sua conta</h1>
-                <div class="col">
-                    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-floating mb-3">
-                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                            <label asp-for="Input.Email">E-mail</label>
-                            <span asp-validation-for="Input.Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                            <label asp-for="Input.Password">Senha</label>
-                            <span asp-validation-for="Input.Password" class="text-danger"></span>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                            <input asp-for="ReturnUrl" value="/" hidden />
-                            <label asp-for="Input.ConfirmPassword">Confirme sua senha</label>
-                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                        </div>
-                        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Crie minha conta!</button>
-                    </form>
+        <div class="col-md-4 text-align-center">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-user-circle text-center mb-3" style="letter-spacing: 5px; font-size: 60px;"></i>
+                    <h1>Crie sua conta</h1>
+                    <div class="col">
+                        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                                <label asp-for="Input.Email">E-mail</label>
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                                <label asp-for="Input.Password">Senha</label>
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                                <input asp-for="ReturnUrl" value="/" hidden />
+                                <label asp-for="Input.ConfirmPassword">Confirme sua senha</label>
+                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary" style="max-width: 200px; margin: 0 auto;">Crie minha conta!</button>
+                        </form>
+                    </div>
+
                 </div>
-
             </div>
         </div>
 

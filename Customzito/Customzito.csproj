@@ -77,7 +77,7 @@
 
   <ItemGroup>
     <Reference Include="CustomBancoLib">
-      <HintPath>..\..\CustomBancoLib\CustomBancoLib\bin\Debug\net6.0\CustomBancoLib.dll</HintPath>
+      <HintPath>Support\Dlls\CustomBancoLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 
