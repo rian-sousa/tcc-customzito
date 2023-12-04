@@ -22,7 +22,7 @@ builder.Services.AddDbContext<CZContext>(options =>
 builder.Services.AddScoped<UserManager<AspNetUsers>>();
 //builder.Services.AddScoped<UserManager<CustomzitoUser>>();
 
-builder.Services.AddDefaultIdentity<AspNetUsers>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<AspNetUsers>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<CZContext>()
     .AddDefaultTokenProviders();
