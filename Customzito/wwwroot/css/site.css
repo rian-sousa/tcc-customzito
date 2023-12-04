@@ -83,6 +83,11 @@ body {
     }
 }
 
+/* Navbar de Funções Internas*/
+
+.menu-icon:hover{
+    color: white;
+}
 
 /*Sobre nós*/
 .social-icons {
